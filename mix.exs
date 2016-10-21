@@ -17,8 +17,8 @@ defmodule Slate.Mixfile do
 
   defp deps do
     [
-     {:cowboy, "~> 1.0.4"},
-     {:plug, "~> 1.2.2"}
-   ]
+      {:cowboy, "~> 1.0.4"},
+      {:plug, "~> 1.2.2"}
+    ]
   end
 end

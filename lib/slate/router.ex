@@ -5,7 +5,8 @@ defmodule Slate.Router do
   plug :dispatch
 
   get "/" do
-    send_resp(conn, 200, "Hi there!")
+    response = EEx.eval_string("<html><head></head><body>Hello <%= thing %></body></html>", [thing: "World!"])
+    send_resp(conn, 200, response)
   end
 
   match _ do
