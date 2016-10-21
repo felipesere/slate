@@ -1,0 +1,80 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+
+@import 'base/typography';
+@import 'base/images';
+
+body {
+	color: #4A4A4A;
+	font-family: 'Khula', sans-serif;
+}
+
+.container {
+		width: 1200px;
+		margin: 2em 0;
+		@include outer-container(95%);
+}
+
+//Clean link 
+.clean-link {
+	color: #4A4A4A;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:visited {
+		color: #4A4A4A;
+	}
+}
+
+
+//Clean list
+.clean-list {
+	list-style: none;
+}
+
+
+// Social Media Images
+.social-container {
+	display: inline-block;
+	padding: 0;
+	text-align: left;
+
+	@media (min-width: 920px) {
+		float: right;
+ }
+}
+
+.social {
+  height: 38px;
+  margin-right: 20px;
+  margin-bottom: 1em;
+  width: 38px;
+
+  @media (min-width: 920px) {
+  	margin-bottom: 0;
+  }
+}
+
+
+// Back button
+.back-container {
+	display: flex;
+	margin: 1em 0;
+}
+
+.back-container__text {
+	border: 2px solid #4A4A4A;
+	border-radius: 20px;
+	font-weight: 700;
+	justify-content: flex-start;
+	padding: .3em .5em 0 .5em;
+	text-align: center;
+	text-transform: uppercase;
+
+	img {
+		padding-right: 5px;
+	}
+}

@@ -1,0 +1,118 @@
+.content-wrapper > section:nth-child(even) {
+	@include omega();
+}
+
+//this needs to be true only IF there 
+//is an odd number of asset.
+// .content-wrapper > section:last-of-type {
+// 	clear: both;
+// }
+
+
+.single-wrapper {
+	@include span-columns(12);
+
+	@media (min-width: 1000px) {
+		@include span-columns(6);
+	}
+}
+
+.single-wrapper:after {
+	content: "";
+	display: block;
+	padding-bottom: 2%
+}
+
+.single {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.single:after {
+	background-repeat: no-repeat;
+	content: "";
+	display: block;
+	padding-bottom: 77%;
+}
+
+.quadrant-wrapper {
+	@media (min-width: 1000px) {
+		@include span-columns(6);
+	}
+}
+
+.quadrant-wrapper:after {
+	content: "";
+	display: block;
+	padding-bottom: 50%;
+}
+
+.quadrant {
+	@include span-columns(6);
+	
+	background-position: 50% 50%;
+	background-size: cover;
+	margin-right: 1em;
+	margin-bottom: .3em;
+}
+
+.quadrant:nth-child(n+3) {
+	margin-bottom: 0;
+}
+
+.quadrant:after {
+	content: "";
+	display: block;
+	padding-bottom: 77.5%
+}
+
+.quadrant:nth-child(even) {
+	@include omega();
+}
+
+.quadrant:last-child {
+	margin-right: .2em;
+
+	@media (min-width: 730px) {
+	  margin-right: .3em;
+	} 
+}
+
+.asset-wrapper {
+	padding-bottom: 10%;
+	@include span-columns(12);
+	@include omega();
+}
+
+
+
+//Gallery page 
+.quadrant-wrapper--full {
+	@include span-columns(12);
+}
+
+
+//Single image
+.single-wrapper--full {
+	margin-top: 2em;	
+	@include span-columns(12);
+}
+
+.image-description {
+	@include span-columns(12);
+
+	@media (min-width: 710px) {
+		@include span-columns(6);
+	}
+}
+
+.exif-data {
+	@include span-columns(12);
+	padding-left: 0;
+
+	@media (min-width: 710px) {
+		@include span-columns(4);
+		float: right;
+	}	
+}

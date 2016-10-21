@@ -1,6 +1,8 @@
 defmodule Slate.Router do
   use Plug.Router
+  use Plug.Builder
 
+  plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug :match
   plug :dispatch
 
