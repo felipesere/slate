@@ -1,32 +1,7 @@
-<!doctype html>
-<html>
-  <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <meta name="viewport" content="initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
-    <link type="image/ico" href="images/camera-favicon.ico" rel="icon"/>
-  </head>
-
-	<body>
-
-	<section class="container">
-
-      <header>
-        <h1 class="title"><a href="index.html" class="clean-link">Felipe Seré</a></h1>
-        <h2 class="subtitle">I picked up photography while living in Kenya with my parents about twelve years ago. My current challenge is to use a 50mm fixed-lens more and more.</h2>
-
-        <div class="social-container">
-          <a href="twitter.com"><img src="images/social/twitter.svg" class="social"></a>
-          <a href="facebook.com"><img src="images/social/facebook.svg" class="social"></a>
-          <a href="github.com"><img src="images/social/github.svg" class="social"></a>
-        </div>
-      </header>
+<%= EEx.eval_file __DIR__ <> "/_header.html.eex" %>
 
     <div class="back-container">
-      <a href="index.html" class="back-container__text clean-link"><img src="images/arrow-left.svg">Home</a>
+      <a href="index.html" class="back-container__text clean-link"><img src="public/images/arrow-left.svg">Home</a>
     </div>
 
 			<h1 class="page-title">Strength in calmness</h1>
@@ -34,7 +9,7 @@
 
     <section class="single-wrapper--full">
       <div class="single single"
-        style="background-image: url(images/solo-images/strength.jpg);">
+        style="background-image: url(public/images/solo-images/strength.jpg);">
       </div>
     </section>
 
@@ -47,7 +22,4 @@
       <li>ISO: 100</li>
       <li>Shutter speed: 30s</li>
     </ul>
-
-	</body>
-
-</html>
+<%= EEx.eval_file __DIR__ <> "/_footer.html.eex" %>

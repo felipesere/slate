@@ -1,0 +1,35 @@
+<%= EEx.eval_file __DIR__ <> "/_header.html.eex" %>
+		<div class="back-container">
+			<a href="index.html" class="back-container__text clean-link"><img src="public/images/arrow-left.svg">Home</a>
+		</div>
+
+			<h1 class="page-title">Madiera</h1>
+			<p class="asset-subtitle">April 3, 2015</p>
+
+			<section class="quadrant-wrapper--full">
+
+				<a href="gallery-image.html"> 
+          <div class="quadrant" 
+            style= "background-image: url(public/images/madiera/outcropping.jpg);">  
+          </div>  
+				</a>
+
+				<a href="gallery-image.html">
+          <div class="quadrant" 
+            style="background-image: url(public/images/madiera/rocks.jpg);">
+          </div> 
+        </a>   
+
+        <a href="gallery-image.html">  
+          <div class="quadrant" 
+            style="background-image: url(public/images/madiera/beach.jpg);">
+          </div>  
+        </a>  
+
+        <a href="gallery-image.html">  
+          <div class="quadrant" 
+            style="background-image: url(public/images/madiera/waves.jpg);">
+          </div>  
+ 				</a>
+
+<%= EEx.eval_file __DIR__ <> "/_footer.html.eex" %>
