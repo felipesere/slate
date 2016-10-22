@@ -10,6 +10,9 @@ provider "heroku" {
 resource "heroku_app" "web" {
   name = "slate-blog"
   region = "us"
+  config_vars {
+    BUILDPACK_URL = "https://github.com/HashNuke/heroku-buildpack-elixir.git"
+  }
 }
 
 resource "aws_route53_zone" "main_zone" {
