@@ -10,7 +10,7 @@ defmodule Slate.Router do
     render_template(conn, "index.html")
   end
 
-  get "/:page" do
+  get "/:page" when page in ["gallery.html", "index.html", "solo-image.html"] do
     render_template(conn, page)
   end
 
