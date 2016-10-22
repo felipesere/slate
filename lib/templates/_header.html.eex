@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="public/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
+    <link type="image/ico" href="public/images/camera-favicon.ico" rel="icon"/>
+  </head>
+
+  <body>
+    <section class="container">
+      <header>
+        <h1 class="title"><a href="index.html" class="clean-link">Felipe Sere</a></h1>
+        <h2 class="subtitle">I picked up photography while living in Kenya with my parents about twelve years ago. My current challenge is to use a 50mm fixed-lens more and more.</h2>
+
+        <div class="social-container">
+          <a href="twitter.com"><img src="public/images/social/twitter.svg" class="social"></a>
+          <a href="facebook.com"><img src="public/images/social/facebook.svg" class="social"></a>
+          <a href="github.com"><img src="public/images/social/github.svg" class="social"></a>
+        </div>
+      </header>
