@@ -7,7 +7,11 @@ defmodule Slate.Router do
   plug :dispatch
 
   get "/" do
-    render_template(conn, "index")
+    render_template(conn, "index.html")
+  end
+
+  get "/:page" do
+    render_template(conn, page)
   end
 
   def render_template(conn, name) do
@@ -17,7 +21,7 @@ defmodule Slate.Router do
     |> respond(conn)
   end
 
-  defp expand(name), do: Path.expand("lib/templates/#{name}.html.eex")
+  defp expand(name), do: Path.expand("lib/templates/#{name}.eex")
   defp template(path), do: EEx.eval_file(path)
   defp respond(body, conn), do: send_resp(conn, 200, body)
 
