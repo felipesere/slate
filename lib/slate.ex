@@ -6,10 +6,17 @@ defmodule Slate do
     import Supervisor.Spec, warn: false
 
     children = [
-      Plug.Adapters.Cowboy.child_spec(:http, Slate.Router, [], [port: 80])
+      Plug.Adapters.Cowboy.child_spec(:http, Slate.Router, [], [port: port()])
     ]
 
     opts = [strategy: :one_for_one, name: Slate.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  def port do
+    case System.get_env("PORT") do
+      nil -> 4000
+      x -> Integer.parse(x) |> elem(0)
+    end
   end
 end
