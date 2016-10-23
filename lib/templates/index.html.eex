@@ -1,54 +1,9 @@
 <%= View.partial("_header.html.eex") %>
       <section class="content-wrapper">
 
-        <section class="single-wrapper">
-          <a href="solo-image.html">
-            <div class="single"
-                 style="background-image: url(<%=View.image("london.jpg") %>);">
-            </div>
-          </a>
+        <%= View.partial("_single-image.html.eex") %>
 
-          <div class="asset-wrapper">
-            <p class="asset-title">London</p>
-            <p class="asset-subtitle">March 1, 2015</p> 
-          </div> 
-          
-        </section>
-
-        <section class="quadrant-wrapper">
-
-          <a href="gallery.html"> 
-            <div class="quadrant" 
-                 style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
-            </div>  
-          </a>
-
-          <a href="gallery.html">
-            <div class="quadrant" 
-                 style="background-image: url(<%=View.image("rocks.jpg")%>);">
-            </div> 
-          </a>   
-
-          <a href="gallery.html">  
-            <div class="quadrant" 
-                 style="background-image: url(<%=View.image("beach.jpg")%>);">
-            </div>  
-          </a>  
-
-          <a href="gallery.html">  
-            <div class="quadrant" 
-                 style="background-image: url(<%=View.image("waves.jpg")%>);">
-            </div>  
-          </a> 
-        
-
-          <div class="asset-wrapper">
-            <p class="asset-description">10 images</p> 
-            <p class="asset-title">Madiera</p>
-            <p class="asset-subtitle">March 16, 2015</p>
-
-          </div>  
-        </section>
+        <%= View.partial("_quadrant-wrapper.html.eex") %>
 
         <section class="single-wrapper">
           <a href="solo-image.html">
@@ -56,57 +11,44 @@
                  style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
-          
+
             <div class="asset-wrapper">
               <p class="asset-title">Spring is coming</p>
-              <p class="asset-subtitle">March 11, 2015</p>  
-            </div> 
+              <p class="asset-subtitle">March 11, 2015</p>
+            </div>
         </section>
 
         <section class="quadrant-wrapper">
 
-          <a href="gallery.html"> 
-            <div class="quadrant" 
-                 style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
-            </div>  
+          <a href="gallery.html">
+            <div class="quadrant"
+                 style= "background-image: url(<%=View.image("outcropping.jpg")%>);">
+            </div>
           </a>
 
           <a href="gallery.html">
-            <div class="quadrant" 
+            <div class="quadrant"
                  style="background-image: url(<%=View.image("rocks.jpg")%>);">
-            </div> 
-          </a>   
-
-          <a href="gallery.html">  
-            <div class="quadrant" 
-                 style="background-image: url(<%=View.image("beach.jpg")%>);">
-            </div>  
-          </a>  
-
-          <a href="gallery.html">  
-            <div class="quadrant" 
-                 style="background-image: url(<%=View.image("waves.jpg")%>);">
-            </div>  
-          </a>
-
-          <div class="asset-wrapper">
-            <p class="asset-description">6 images</p> 
-            <p class="asset-title">Madiera</p>
-            <p class="asset-subtitle">March 16, 2015</p>  
-          </div>  
-        </section>  
-
-        <section class="single-wrapper">
-          <a href="solo-image.html">
-            <div class="single"
-                 style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
-        
+
+          <a href="gallery.html">
+            <div class="quadrant"
+                 style="background-image: url(<%=View.image("beach.jpg")%>);">
+            </div>
+          </a>
+
+          <a href="gallery.html">
+            <div class="quadrant"
+                 style="background-image: url(<%=View.image("waves.jpg")%>);">
+            </div>
+          </a>
+
           <div class="asset-wrapper">
-            <p class="asset-title">Spring is coming</p>
-            <p class="asset-subtitle">March 11, 2015</p>  
-          </div> 
+            <p class="asset-description">6 images</p>
+            <p class="asset-title">Madiera</p>
+            <p class="asset-subtitle">March 16, 2015</p>
+          </div>
         </section>
 
         <section class="single-wrapper">
@@ -115,11 +57,24 @@
                  style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
-        
+
           <div class="asset-wrapper">
             <p class="asset-title">Spring is coming</p>
-            <p class="asset-subtitle">March 11, 2015</p>  
-          </div> 
+            <p class="asset-subtitle">March 11, 2015</p>
+          </div>
+        </section>
+
+        <section class="single-wrapper">
+          <a href="solo-image.html">
+            <div class="single"
+                 style="background-image: url(<%=View.image("spring.jpg")%>);">
+            </div>
+          </a>
+
+          <div class="asset-wrapper">
+            <p class="asset-title">Spring is coming</p>
+            <p class="asset-subtitle">March 11, 2015</p>
+          </div>
         </section>
 
       </section>

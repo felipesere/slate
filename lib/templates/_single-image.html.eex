@@ -1,0 +1,13 @@
+<section class="single-wrapper">
+  <a href="solo-image.html">
+    <div class="single"
+         style="background-image: url(<%=View.image("london.jpg") %>);">
+    </div>
+  </a>
+
+  <div class="asset-wrapper">
+    <p class="asset-title">London</p>
+    <p class="asset-subtitle">March 1, 2015</p>
+  </div>
+
+</section>
