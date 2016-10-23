@@ -4,6 +4,12 @@ defmodule View do
   end
 
   def partial(template, params \\ []) do
-     EEx.eval_file "#{__DIR__}/#{template}.html.eex", params
+    EEx.eval_file("#{__DIR__}/#{template}.html.eex", params, [])
+  end
+
+  def render_many(collection, [element: name, in: template]) do
+    Enum.map(collection, fn(element) ->
+      partial(template, Keyword.new([{name, element}]))
+    end)
   end
 end
