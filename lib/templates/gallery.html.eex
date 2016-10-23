@@ -7,26 +7,4 @@
 
 <section class="quadrant-wrapper--full">
 
-  <a href="gallery-image.html">
-    <div class="quadrant"
-         style= "background-image: url(<%=View.image("outcropping.jpg")%>);">
-    </div>
-  </a>
-
-  <a href="gallery-image.html">
-    <div class="quadrant"
-         style="background-image: url(<%=View.image("rocks.jpg")%>);">
-    </div>
-  </a>
-
-  <a href="gallery-image.html">
-    <div class="quadrant"
-         style="background-image: url(<%=View.image("beach.jpg")%>);">
-    </div>
-  </a>
-
-  <a href="gallery-image.html">
-    <div class="quadrant"
-         style="background-image: url(<%=View.image("waves.jpg")%>);">
-    </div>
-  </a>
+  <%= View.render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"], element: :image, in: "_quadrant") %>

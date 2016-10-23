@@ -1,4 +1,4 @@
-<a href="gallery.html">
+<a href="gallery-image.html">
   <div class="quadrant"
        style= "background-image: url(<%=View.image(image)%>);">
   </div>
