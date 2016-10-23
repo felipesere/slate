@@ -1,25 +1,24 @@
 <%= EEx.eval_file __DIR__ <> "/_header.html.eex" %>
+<div class="back-container">
+  <a href="index.html" class="back-container__text clean-link"><img src="<%=View.image("arrow-left.svg")%>">Home</a>
+</div>
 
-    <div class="back-container">
-      <a href="index.html" class="back-container__text clean-link"><img src="<%=View.image("arrow-left.svg")%>">Home</a>
-    </div>
+<h1 class="page-title">Strength in calmness</h1>
+<p class="asset-subtitle">April 3, 2015</p>
 
-			<h1 class="page-title">Strength in calmness</h1>
-			<p class="asset-subtitle">April 3, 2015</p>
+<section class="single-wrapper--full">
+  <div class="single single"
+       style="background-image: url(<%=View.image("strength.jpg")%>);">
+  </div>
+</section>
 
-    <section class="single-wrapper--full">
-      <div class="single single"
-           style="background-image: url(<%=View.image("strength.jpg")%>);">
-      </div>
-    </section>
+<p class="image-description">This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere.</p>
 
-    <p class="image-description">This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere.</p>
-
-    <ul class="clean-list exif-data">
-      <li>Aperture: ƒ/11</li>
-      <li>Camera: Canon EOS 70D</li>
-      <li>Focal length: 10mm</li>
-      <li>ISO: 100</li>
-      <li>Shutter speed: 30s</li>
-    </ul>
+<ul class="clean-list exif-data">
+  <li>Aperture: ƒ/11</li>
+  <li>Camera: Canon EOS 70D</li>
+  <li>Focal length: 10mm</li>
+  <li>ISO: 100</li>
+  <li>Shutter speed: 30s</li>
+</ul>
 <%= EEx.eval_file __DIR__ <> "/_footer.html.eex" %>

@@ -1,4 +1,4 @@
-<%= EEx.eval_file __DIR__ <> "/_header.html.eex" %>
+<%= View.partial("_header.html.eex") %>
       <section class="content-wrapper">
 
         <section class="single-wrapper">
@@ -123,4 +123,4 @@
         </section>
 
       </section>
-<%= EEx.eval_file __DIR__ <> "/_footer.html.eex" %>
+<%= View.partial("/_footer.html.eex") %>
