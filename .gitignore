@@ -16,8 +16,7 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
-priv/static/.sass-cache
-style/.sass-cache
+**/.sass-cache
 
 infrastructure/*.plan
 infrastructure/variables.tf
