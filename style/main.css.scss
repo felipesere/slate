@@ -5,46 +5,46 @@
 @import 'base/images';
 
 body {
-	color: #4A4A4A;
-	font-family: 'Khula', sans-serif;
+  color: #4A4A4A;
+  font-family: 'Khula', sans-serif;
 }
 
 .container {
-		width: 1200px;
-		margin: 2em 0;
-		@include outer-container(95%);
+  width: 1200px;
+  margin: 2em 0;
+  @include outer-container(95%);
 }
 
-//Clean link 
+//Clean link
 .clean-link {
-	color: #4A4A4A;
-	text-decoration: none;
+  color: #4A4A4A;
+  text-decoration: none;
 
-	&:hover {
-		text-decoration: underline;
-	}
+  &:hover {
+    text-decoration: underline;
+  }
 
-	&:visited {
-		color: #4A4A4A;
-	}
+  &:visited {
+    color: #4A4A4A;
+  }
 }
 
 
 //Clean list
 .clean-list {
-	list-style: none;
+  list-style: none;
 }
 
 
 // Social Media Images
 .social-container {
-	display: inline-block;
-	padding: 0;
-	text-align: left;
+  display: inline-block;
+  padding: 0;
+  text-align: left;
 
-	@media (min-width: 920px) {
-		float: right;
- }
+  @media (min-width: 920px) {
+    float: right;
+  }
 }
 
 .social {
@@ -54,27 +54,27 @@ body {
   width: 38px;
 
   @media (min-width: 920px) {
-  	margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
 
 // Back button
 .back-container {
-	display: flex;
-	margin: 1em 0;
+  display: flex;
+  margin: 1em 0;
 }
 
 .back-container__text {
-	border: 2px solid #4A4A4A;
-	border-radius: 20px;
-	font-weight: 700;
-	justify-content: flex-start;
-	padding: .3em .5em 0 .5em;
-	text-align: center;
-	text-transform: uppercase;
+  border: 2px solid #4A4A4A;
+  border-radius: 20px;
+  font-weight: 700;
+  justify-content: flex-start;
+  padding: .3em .5em 0 .5em;
+  text-align: center;
+  text-transform: uppercase;
 
-	img {
-		padding-right: 5px;
-	}
+  img {
+    padding-right: 5px;
+  }
 }
