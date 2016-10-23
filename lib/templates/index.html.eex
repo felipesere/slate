@@ -4,7 +4,7 @@
         <section class="single-wrapper">
           <a href="solo-image.html">
             <div class="single"
-              style="background-image: url(public/images/solo-images/london.jpg);">
+                 style="background-image: url(<%=View.image("london.jpg") %>);">
             </div>
           </a>
 
@@ -19,25 +19,25 @@
 
           <a href="gallery.html"> 
             <div class="quadrant" 
-              style= "background-image: url(public/images/madiera/outcropping.jpg);">  
+                 style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
             </div>  
           </a>
 
           <a href="gallery.html">
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/rocks.jpg);">
+                 style="background-image: url(<%=View.image("rocks.jpg")%>);">
             </div> 
           </a>   
 
           <a href="gallery.html">  
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/beach.jpg);">
+                 style="background-image: url(<%=View.image("beach.jpg")%>);">
             </div>  
           </a>  
 
           <a href="gallery.html">  
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/waves.jpg);">
+                 style="background-image: url(<%=View.image("waves.jpg")%>);">
             </div>  
           </a> 
         
@@ -53,7 +53,7 @@
         <section class="single-wrapper">
           <a href="solo-image.html">
             <div class="single"
-              style="background-image: url(public/images/solo-images/spring.jpg);">
+                 style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
           
@@ -67,25 +67,25 @@
 
           <a href="gallery.html"> 
             <div class="quadrant" 
-              style= "background-image: url(public/images/madiera/outcropping.jpg);">  
+                 style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
             </div>  
           </a>
 
           <a href="gallery.html">
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/rocks.jpg);">
+                 style="background-image: url(<%=View.image("rocks.jpg")%>);">
             </div> 
           </a>   
 
           <a href="gallery.html">  
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/beach.jpg);">
+                 style="background-image: url(<%=View.image("beach.jpg")%>);">
             </div>  
           </a>  
 
           <a href="gallery.html">  
             <div class="quadrant" 
-              style="background-image: url(public/images/madiera/waves.jpg);">
+                 style="background-image: url(<%=View.image("waves.jpg")%>);">
             </div>  
           </a>
 
@@ -99,7 +99,7 @@
         <section class="single-wrapper">
           <a href="solo-image.html">
             <div class="single"
-              style="background-image: url(public/images/solo-images/spring.jpg);">
+                 style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
         
@@ -112,7 +112,7 @@
         <section class="single-wrapper">
           <a href="solo-image.html">
             <div class="single"
-              style="background-image: url(public/images/solo-images/spring.jpg);">
+                 style="background-image: url(<%=View.image("spring.jpg")%>);">
             </div>
           </a>
         

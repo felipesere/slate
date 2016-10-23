@@ -10,25 +10,25 @@
 
 				<a href="gallery-image.html"> 
           <div class="quadrant" 
-            style= "background-image: url(public/images/madiera/outcropping.jpg);">  
+               style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
           </div>  
 				</a>
 
 				<a href="gallery-image.html">
           <div class="quadrant" 
-            style="background-image: url(public/images/madiera/rocks.jpg);">
+               style="background-image: url(<%=View.image("rocks.jpg")%>);">
           </div> 
         </a>   
 
         <a href="gallery-image.html">  
           <div class="quadrant" 
-            style="background-image: url(public/images/madiera/beach.jpg);">
+               style="background-image: url(<%=View.image("beach.jpg")%>);">
           </div>  
         </a>  
 
         <a href="gallery-image.html">  
           <div class="quadrant" 
-            style="background-image: url(public/images/madiera/waves.jpg);">
+               style="background-image: url(<%=View.image("waves.jpg")%>);">
           </div>  
  				</a>
 
