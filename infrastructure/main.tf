@@ -14,20 +14,3 @@ resource "heroku_app" "web" {
     BUILDPACK_URL = "https://github.com/HashNuke/heroku-buildpack-elixir.git"
   }
 }
-
-resource "aws_route53_zone" "main_zone" {
-  name = "felipesere.com"
-}
-
-resource "aws_route53_record" "www-cname" {
-  zone_id = "${aws_route53_zone.main_zone.zone_id}"
-  name = "www"
-  type = "CNAME"
-  ttl = "300"
-  records = ["${heroku_app.web.heroku_hostname}"]
-}
-
-resource "heroku_domain" "foobar" {
-  app      = "${heroku_app.web.name}"
-  hostname = "${aws_route53_zone.main_zone.name}"
-}
