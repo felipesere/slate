@@ -8,12 +8,12 @@ defmodule Slate.Router do
   plug :dispatch
 
   get "/" do
-    render_template(conn, "index.html")
+    render_template(conn, "index")
   end
 
   get "/public/images/:name" do
-    body = 
-      S3.get_object("inbox", name) 
+    body =
+      S3.get_object("inbox", name)
       |> ExAws.request!
       |> extract
 
@@ -28,19 +28,16 @@ defmodule Slate.Router do
 
   def extract(%{body: body}), do: body
 
-  get "/:page" when page in ["gallery.html", "index.html", "solo-image.html"] do
+  get "/:page" when page in ["gallery.html", "gallery-image.html", "index.html", "solo-image.html"] do
     render_template(conn, page)
   end
 
   def render_template(conn, name) do
     name
-    |> expand
-    |> template
+    |> View.render
     |> respond(conn)
   end
 
-  defp expand(name), do: Path.expand("lib/templates/#{name}.eex")
-  defp template(path), do: EEx.eval_file(path)
   defp respond(body, conn), do: send_resp(conn, 200, body)
 
   match _ do

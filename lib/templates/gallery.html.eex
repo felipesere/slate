@@ -1,35 +1,32 @@
-<%= View.partial("_header") %>
-		<div class="back-container">
-			<a href="index.html" class="back-container__text clean-link"><img src="public/images/arrow-left.svg">Home</a>
-		</div>
+<div class="back-container">
+  <a href="index.html" class="back-container__text clean-link"><img src="public/images/arrow-left.svg">Home</a>
+</div>
 
-			<h1 class="page-title">Madiera</h1>
-			<p class="asset-subtitle">April 3, 2015</p>
+<h1 class="page-title">Madiera</h1>
+<p class="asset-subtitle">April 3, 2015</p>
 
-			<section class="quadrant-wrapper--full">
+<section class="quadrant-wrapper--full">
 
-				<a href="gallery-image.html"> 
-          <div class="quadrant" 
-               style= "background-image: url(<%=View.image("outcropping.jpg")%>);">  
-          </div>  
-				</a>
+  <a href="gallery-image.html">
+    <div class="quadrant"
+         style= "background-image: url(<%=View.image("outcropping.jpg")%>);">
+    </div>
+  </a>
 
-				<a href="gallery-image.html">
-          <div class="quadrant" 
-               style="background-image: url(<%=View.image("rocks.jpg")%>);">
-          </div> 
-        </a>   
+  <a href="gallery-image.html">
+    <div class="quadrant"
+         style="background-image: url(<%=View.image("rocks.jpg")%>);">
+    </div>
+  </a>
 
-        <a href="gallery-image.html">  
-          <div class="quadrant" 
-               style="background-image: url(<%=View.image("beach.jpg")%>);">
-          </div>  
-        </a>  
+  <a href="gallery-image.html">
+    <div class="quadrant"
+         style="background-image: url(<%=View.image("beach.jpg")%>);">
+    </div>
+  </a>
 
-        <a href="gallery-image.html">  
-          <div class="quadrant" 
-               style="background-image: url(<%=View.image("waves.jpg")%>);">
-          </div>  
- 				</a>
-
-<%= View.partial("_footer") %>
+  <a href="gallery-image.html">
+    <div class="quadrant"
+         style="background-image: url(<%=View.image("waves.jpg")%>);">
+    </div>
+  </a>

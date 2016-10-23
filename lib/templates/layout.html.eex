@@ -22,3 +22,9 @@
           <a href="github.com"><img src="<%=View.image("github.svg")%>" class="social"></a>
         </div>
       </header>
+
+      <%= content %>
+
+    </section>
+  </body>
+</html>
