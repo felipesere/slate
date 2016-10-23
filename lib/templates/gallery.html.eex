@@ -1,4 +1,4 @@
-<%= EEx.eval_file __DIR__ <> "/_header.html.eex" %>
+<%= View.partial("_header") %>
 		<div class="back-container">
 			<a href="index.html" class="back-container__text clean-link"><img src="public/images/arrow-left.svg">Home</a>
 		</div>
@@ -32,4 +32,4 @@
           </div>  
  				</a>
 
-<%= EEx.eval_file __DIR__ <> "/_footer.html.eex" %>
+<%= View.partial("_footer") %>

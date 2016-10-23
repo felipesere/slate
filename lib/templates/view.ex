@@ -3,7 +3,7 @@ defmodule View do
     "public/images/#{name}"
   end
 
-  def partial(template) do
-     EEx.eval_file "#{__DIR__}/#{template}"
+  def partial(template, params \\ []) do
+     EEx.eval_file "#{__DIR__}/#{template}.html.eex", params
   end
 end
