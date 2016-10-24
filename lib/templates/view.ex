@@ -18,8 +18,6 @@ defmodule View do
   end
 
   def render_many(collection, [element: name, in: template]) do
-    Enum.map(collection, fn(element) ->
-      partial(template, Keyword.new([{name, element}]))
-    end)
+    Enum.map(collection, &partial(template, Keyword.new([{name, &1}])))
   end
 end
