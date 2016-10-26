@@ -1,7 +1,7 @@
 defmodule View do
 
   def image(name) do
-    "public/images/#{name}"
+    "#{Application.fetch_env!(:slate, :image_host)}/slate-inbox/#{name}"
   end
 
   def render(template, params \\ []) do

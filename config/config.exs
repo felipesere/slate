@@ -7,6 +7,9 @@ config :ex_aws,
   secret_access_key: "SECRET_KEY_PASSWORD"
 
 config :ex_aws, :s3, host: "localhost:9000", scheme: "http://"
+
+config :slate,
+  image_host: "http://s3.amazonaws.com"
         
 
 # It is also possible to import configuration files, relative to this
@@ -15,5 +18,5 @@ config :ex_aws, :s3, host: "localhost:9000", scheme: "http://"
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
+import_config "#{Mix.env}.exs"
 
