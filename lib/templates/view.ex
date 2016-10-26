@@ -1,5 +1,29 @@
 defmodule View do
 
+  defmacro __using__([templates: location]) do
+    quote do
+      @templates unquote(location)
+      @before_compile View
+    end
+  end
+
+  defmacro __before_compile__(env) do
+    env.file
+    |> Path.dirname
+    |> File.ls!
+    |> Enum.filter( fn file -> String.ends_with?(file, ".html.eex") end)
+    |> Enum.map(fn file ->
+      quote do
+        def render(:index, params) do
+          "Hello there"
+        end
+      end
+    end)
+  end
+
+  def to_atom(filename) do
+  end
+
   def image(name) do
     "#{Application.fetch_env!(:slate, :image_host)}/slate-inbox/#{name}"
   end

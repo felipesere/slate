@@ -7,6 +7,7 @@ defmodule Slate.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     elixirc_paths: elixirc_path(Mix.env),
      deps: deps()]
   end
 
@@ -25,4 +26,7 @@ defmodule Slate.Mixfile do
       {:sweet_xml, "~> 0.6.2"}
     ]
   end
+
+  defp elixirc_path(:test), do: ["lib/", "test/view/example"]
+  defp elixirc_path(_), do: ["lib/"]
 end
