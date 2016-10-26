@@ -20,3 +20,5 @@ erl_crash.dump
 
 infrastructure/*.plan
 infrastructure/variables.tf
+
+**/*.tfstate
