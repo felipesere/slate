@@ -1,28 +1,43 @@
 defmodule Slate.Router do
   use Plug.Router
   use Plug.Builder
+  alias ExAws.S3
 
-  plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css images)
+  plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug :match
   plug :dispatch
 
   get "/" do
-    render_template(conn, "index.html")
+    render_template(conn, "index")
   end
 
-  get "/:page" when page in ["gallery.html", "index.html", "solo-image.html"] do
+  get "/public/images/:name" do
+    body =
+      S3.get_object("inbox", name)
+      |> ExAws.request!
+      |> extract
+
+    if String.contains?(name, "svg") do
+      conn
+      |> put_resp_header("content-type","image/svg+xml")
+      |> send_resp(200, body)
+    else
+      send_resp(conn, 200, body)
+    end
+  end
+
+  def extract(%{body: body}), do: body
+
+  get "/:page" when page in ["gallery.html", "gallery-image.html", "index.html", "solo-image.html"] do
     render_template(conn, page)
   end
 
   def render_template(conn, name) do
     name
-    |> expand
-    |> template
+    |> View.render
     |> respond(conn)
   end
 
-  defp expand(name), do: Path.expand("lib/templates/#{name}.eex")
-  defp template(path), do: EEx.eval_file(path)
   defp respond(body, conn), do: send_resp(conn, 200, body)
 
   match _ do

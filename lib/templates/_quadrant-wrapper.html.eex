@@ -1,0 +1,10 @@
+<section class="quadrant-wrapper">
+
+  <%= View.render_many(images, element: :image, in: "_quadrant") %>
+
+  <div class="asset-wrapper">
+    <p class="asset-description">10 images</p>
+    <p class="asset-title">Madiera</p>
+    <p class="asset-subtitle">March 16, 2015</p>
+  </div>
+</section>

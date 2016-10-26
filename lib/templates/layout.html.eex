@@ -17,8 +17,14 @@
         <h2 class="subtitle">I picked up photography while living in Kenya with my parents about twelve years ago. My current challenge is to use a 50mm fixed-lens more and more.</h2>
 
         <div class="social-container">
-          <a href="twitter.com"><img src="public/images/social/twitter.svg" class="social"></a>
-          <a href="facebook.com"><img src="public/images/social/facebook.svg" class="social"></a>
-          <a href="github.com"><img src="public/images/social/github.svg" class="social"></a>
+          <a href="twitter.com"><img src="<%=View.image("twitter.svg")%>" class="social"></a>
+          <a href="facebook.com"><img src="<%=View.image("facebook.svg")%>" class="social"></a>
+          <a href="github.com"><img src="<%=View.image("github.svg")%>" class="social"></a>
         </div>
       </header>
+
+      <%= content %>
+
+    </section>
+  </body>
+</html>

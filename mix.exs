@@ -11,14 +11,18 @@ defmodule Slate.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug],
+    [applications: [:logger, :cowboy, :plug, :hackney, :ex_aws],
      mod: {Slate, []}]
   end
 
   defp deps do
     [
       {:cowboy, "~> 1.0.4"},
-      {:plug, "~> 1.2.2"}
+      {:plug, "~> 1.2.2"},
+      {:ex_aws, "~> 1.0.0-rc.3"},
+      {:poison, "~> 2.0"},
+      {:hackney, "~> 1.6"},
+      {:sweet_xml, "~> 0.6.2"}
     ]
   end
 end
