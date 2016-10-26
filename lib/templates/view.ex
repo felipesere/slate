@@ -12,9 +12,10 @@ defmodule View do
     |> Path.dirname
     |> File.ls!
     |> Enum.filter( fn file -> String.ends_with?(file, ".html.eex") end)
-    |> Enum.map(fn file ->
+    |> Enum.map(fn file -> {file, to_atom(file)} end)
+    |> Enum.map(fn {file, file_param} ->
       quote do
-        def render(:index, params) do
+        def render(file_param , params) do
           "Hello there"
         end
       end
@@ -22,6 +23,9 @@ defmodule View do
   end
 
   def to_atom(filename) do
+    String.split(filename, ".")
+    |> List.first
+    |> String.to_atom
   end
 
   def image(name) do
