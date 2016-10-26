@@ -8,15 +8,16 @@ defmodule View do
   end
 
   defmacro __before_compile__(env) do
-    env.file
-    |> Path.dirname
+    current_dir = Path.dirname(env.file)
+
+    current_dir
     |> File.ls!
     |> Enum.filter( fn file -> String.ends_with?(file, ".html.eex") end)
     |> Enum.map(fn file -> {file, to_atom(file)} end)
     |> Enum.map(fn {file, file_param} ->
       quote do
         def render(file_param , params) do
-          "Hello there"
+          unquote(EEx.eval_file "#{current_dir}/#{file}")
         end
       end
     end)

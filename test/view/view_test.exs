@@ -3,6 +3,6 @@ defmodule ViewTest do
 
   test "truth" do
     result = ExampleView.render(:index, [])
-    assert result == "Hello there"
+    assert result == "Hello there\n"
   end
 end
