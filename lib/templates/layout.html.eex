@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/main.css">
     <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
-    <link type="image/ico" href="public/images/camera-favicon.ico" rel="icon"/>
+    <link type="image/ico" href="<%=View.image("camera-favicon.ico")%>" rel="icon"/>
   </head>
 
   <body>
