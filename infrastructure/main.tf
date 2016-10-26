@@ -32,18 +32,18 @@ resource "aws_route53_record" "www-cname" {
   records = ["${heroku_app.web.heroku_hostname}"]
 }
 
-resource "aws_iam_user" "maoni" {
-    name = "maoni"
+resource "aws_iam_user" "slate" {
+    name = "slate"
     path = "/system/"
 }
 
-resource "aws_iam_access_key" "maoni" {
-    user = "${aws_iam_user.maoni.name}"
+resource "aws_iam_access_key" "slate" {
+    user = "${aws_iam_user.slate.name}"
 }
 
-resource "aws_iam_user_policy" "maoni_rw" {
-    name = "maoni_rw"
-    user = "${aws_iam_user.maoni.name}"
+resource "aws_iam_user_policy" "slate_rw" {
+    name = "slate_rw"
+    user = "${aws_iam_user.slate.name}"
     policy= <<EOF
 {
     "Version": "2012-10-17",
@@ -90,7 +90,7 @@ resource "aws_s3_bucket" "prod_bucket" {
             "Sid": "",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${aws_iam_user.maoni.arn}"
+                "AWS": "${aws_iam_user.slate.arn}"
             },
             "Action": "s3:*",
             "Resource": [
@@ -104,5 +104,6 @@ EOF
 }
 
 output "secret" {
-  value = "${aws_iam_access_key.maoni.secret}"
+  value = "${aws_iam_access_key.slate.secret}"
+
 }
