@@ -16,6 +16,7 @@ defmodule View do
     |> Enum.map(fn file ->
       file_param = to_atom(file)
       compiled = EEx.compile_file("#{current_dir}/#{file}", [engine: EEx.SmartEngine])
+
       quote do
         def render(unquote(file_param), var!(assigns)), do: unquote(compiled)
       end
