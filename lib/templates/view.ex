@@ -13,11 +13,12 @@ defmodule View do
     current_dir
     |> File.ls!
     |> Enum.filter( fn file -> String.ends_with?(file, ".html.eex") end)
-    |> Enum.map(fn file -> {file, to_atom(file)} end)
-    |> Enum.map(fn {file, file_param} ->
-      quote do
-        def render(file_param , params) do
-          unquote(EEx.eval_file "#{current_dir}/#{file}")
+    |> Enum.map(fn file ->
+      file_param = to_atom(file)
+      path = "#{current_dir}/#{file}"
+      quote bind_quoted: [path: path, file_param: file_param] do
+        def render(unquote(file_param), assigns) do
+          EEx.compile_file(unquote(path), [assigns: assigns])
         end
       end
     end)
