@@ -24,9 +24,11 @@ defmodule Templating do
     |> Enum.filter(&String.ends_with?(&1, ".html.eex"))
     |> Enum.map(fn file ->
       file_param = to_atom(file)
-      compiled = EEx.compile_file("#{current_dir}/#{file}", [engine: EEx.SmartEngine])
+      path ="#{current_dir}/#{file}"
+      compiled = EEx.compile_file(path, [engine: EEx.SmartEngine])
 
       quote do
+        @external_resource unquote(path)
         def render(unquote(file_param), var!(assigns)), do: unquote(compiled)
       end
     end)
