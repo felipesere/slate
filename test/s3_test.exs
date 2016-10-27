@@ -2,6 +2,7 @@ defmodule S3Tests do
   use ExUnit.Case
   alias ExAws.S3
 
+  @tag :skip
   test "lists all files from S3" do
     S3.list_objects("inbox")
     |> ExAws.request!
@@ -9,13 +10,12 @@ defmodule S3Tests do
     |> IO.inspect
   end
 
+  @tag :skip
   test "read a single file from S3" do
     S3.get_object("inbox", "waves.jpg")
     |> ExAws.request!
     |> IO.inspect
   end
-
-
 
   def extract(%{body: %{contents: content}}) do
     Enum.map(content, &file_name/1)
