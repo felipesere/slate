@@ -6,7 +6,7 @@ defmodule Templating do
       @before_compile Templating
 
       def render_many(collection, [name: name, in: template]) do
-          Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
+        Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
       end
 
       def render(name, assigns, 1) do
@@ -35,26 +35,5 @@ defmodule Templating do
   def to_atom(filename) do
     String.split(filename, ".")
     |> List.first
-  end
-
-  def image(name) do
-    "#{Application.fetch_env!(:slate, :image_host)}/slate-inbox/#{name}"
-  end
-
-  def render(template, params \\ []) do
-    inner = partial(template, params )
-    partial("layout", [content: inner])
-  end
-
-  def partial(template, params \\ []) do
-    if String.ends_with?(template, ".html") do
-      EEx.eval_file("#{__DIR__}/#{template}.eex", params, [])
-    else
-      EEx.eval_file("#{__DIR__}/#{template}.html.eex", params, [])
-    end
-  end
-
-  def render_many(collection, [element: name, in: template]) do
-    Enum.map(collection, &partial(template, Keyword.new([{name, &1}])))
   end
 end

@@ -34,7 +34,7 @@ defmodule Slate.Router do
 
   def render_template(conn, name) do
     name
-    |> SuperView.render([], 1)
+    |> View.render([], 1)
     |> respond(conn)
   end
 
