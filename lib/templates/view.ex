@@ -8,6 +8,11 @@ defmodule View do
       def render_many(collection, [name: name, in: template]) do
           Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
       end
+
+      def render(name, assigns, 1) do
+        inner = render(name, assigns)
+        render("layout", [content: inner])
+      end
     end
   end
 
@@ -30,7 +35,6 @@ defmodule View do
   def to_atom(filename) do
     String.split(filename, ".")
     |> List.first
-    |> String.to_atom
   end
 
   def image(name) do

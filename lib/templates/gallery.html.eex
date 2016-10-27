@@ -1,5 +1,5 @@
 <div class="back-container">
-  <a href="index.html" class="back-container__text clean-link"><img src="<%=View.image("arrow-left.svg")%>">Home</a>
+  <a href="index" class="back-container__text clean-link"><img src="<%=View.image("arrow-left.svg")%>">Home</a>
 </div>
 
 <h1 class="page-title">Madiera</h1>
@@ -7,4 +7,4 @@
 
 <section class="quadrant-wrapper--full">
 
-  <%= View.render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"], element: :image, in: "_quadrant") %>
+  <%= render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"], name: :image, in: "quadrant") %>

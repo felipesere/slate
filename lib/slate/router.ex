@@ -28,13 +28,13 @@ defmodule Slate.Router do
 
   def extract(%{body: body}), do: body
 
-  get "/:page" when page in ["gallery.html", "gallery-image.html", "index.html", "solo-image.html"] do
+  get "/:page" when page in ["gallery", "gallery-image", "index", "solo-image"] do
     render_template(conn, page)
   end
 
   def render_template(conn, name) do
     name
-    |> View.render
+    |> SuperView.render([], 1)
     |> respond(conn)
   end
 

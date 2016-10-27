@@ -1,10 +1,10 @@
 <section class="content-wrapper">
 
-  <%= View.partial("_single-image", [image: "london.jpg"]) %>
-  <%= View.partial("_quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
-  <%= View.partial("_single-image", [image: "spring.jpg"]) %>
-  <%= View.partial("_quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
-  <%= View.partial("_single-image", [image: "spring.jpg"]) %>
-  <%= View.partial("_single-image", [image: "spring.jpg"]) %>
-
+  <%= render("single-image", [image: "london.jpg"]) %>
+  <%= render("quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
+  <%= render("single-image", [image: "spring.jpg"]) %>
+  <%= render("quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
+  <%= render("single-image", [image: "spring.jpg"]) %>
+  <%= render("single-image", [image: "spring.jpg"]) %>
+  <%= render("single-image", [image: "spring.jpg"]) %>
 </section>

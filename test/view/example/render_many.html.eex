@@ -1,1 +1,1 @@
-<%= render_many(@numbers, name: :digit, in: :digits) %>
+<%= render_many(@numbers, name: :digit, in: "digits") %>

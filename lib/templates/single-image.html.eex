@@ -1,7 +1,7 @@
 <section class="single-wrapper">
-  <a href="solo-image.html">
+  <a href="solo-image">
     <div class="single"
-         style="background-image: url(<%=View.image(image) %>);">
+         style="background-image: url(<%=View.image(@image) %>);">
     </div>
   </a>
 
@@ -9,5 +9,4 @@
     <p class="asset-title">London</p>
     <p class="asset-subtitle">March 1, 2015</p>
   </div>
-
 </section>

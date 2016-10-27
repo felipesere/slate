@@ -1,5 +1,5 @@
 <div class="back-container">
-  <a href="gallery.html" class="back-container__text clean-link"><img src="<%= View.image("arrow-left.svg") %>">Madiera</a>
+  <a href="gallery" class="back-container__text clean-link"><img src="<%= View.image("arrow-left.svg") %>">Madiera</a>
 </div>
 
 <section class="single-wrapper--full">
