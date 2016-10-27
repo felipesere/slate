@@ -21,4 +21,20 @@ Banana is the way to go.
 
 """
   end
+
+  test "render many" do
+    result = ExampleView.render(:render_many, [numbers: [1,2,3]])
+    assert result == ~S"""
+<li>
+  1
+</li>
+<li>
+  2
+</li>
+<li>
+  3
+</li>
+
+"""
+  end
 end

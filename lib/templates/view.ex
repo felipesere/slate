@@ -4,6 +4,10 @@ defmodule View do
     quote do
       @templates unquote(location)
       @before_compile View
+
+      def render_many(collection, [name: name, in: template]) do
+          Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
+      end
     end
   end
 
