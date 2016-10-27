@@ -10,4 +10,15 @@ defmodule ViewTest do
     result = ExampleView.render(:foo, [bar: "Banana"])
     assert result == "Banana is the way to go.\n"
   end
+
+  test "template within template" do
+    result = ExampleView.render(:super, [where: "there", bar: "Banana"])
+    assert result == ~S"""
+This is large
+Hello there
+
+Banana is the way to go.
+
+"""
+  end
 end
