@@ -9,6 +9,10 @@ defmodule Templating do
         Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
       end
 
+      def render_many(collection, [name: name, selecting: predicate]) do
+        Enum.map(collection, &render(predicate.(&1), Keyword.new([{name, &1}])))
+      end
+
       def within_layout(name, assigns) do
         inner = render(name, assigns)
         render("layout", [content: inner])

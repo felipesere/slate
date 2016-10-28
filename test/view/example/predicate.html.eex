@@ -1,0 +1,7 @@
+<%= render_many(@digits, name: :digit, selecting: fn(element) -> cond do
+                                                                   rem(element,2) == 0 -> "even"
+                                                                   true  ->  "odd" 
+                                                                   end
+                                                  end) %>
+
+

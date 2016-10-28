@@ -37,4 +37,9 @@ Banana is the way to go.
 
 """
   end
+
+  test "render different template based on predicate" do
+    result = ExampleView.render("predicate", [digits: [1,2,3,4]])
+    assert result == "1 is odd.\n2 is even.\n3 is odd.\n4 is even.\n\n\n\n"
+  end
 end
