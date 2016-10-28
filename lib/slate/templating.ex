@@ -9,7 +9,7 @@ defmodule Templating do
         Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
       end
 
-      def render(name, assigns, 1) do
+      def within_layout(name, assigns) do
         inner = render(name, assigns)
         render("layout", [content: inner])
       end
