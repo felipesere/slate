@@ -11,23 +11,6 @@ defmodule Slate.Router do
     render_template(conn, "index")
   end
 
-  get "/public/images/:name" do
-    body =
-      S3.get_object("inbox", name)
-      |> ExAws.request!
-      |> extract
-
-    if String.contains?(name, "svg") do
-      conn
-      |> put_resp_header("content-type","image/svg+xml")
-      |> send_resp(200, body)
-    else
-      send_resp(conn, 200, body)
-    end
-  end
-
-  def extract(%{body: body}), do: body
-
   get "/:page" when page in ["gallery", "gallery-image", "index", "solo-image"] do
     render_template(conn, page)
   end
