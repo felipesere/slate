@@ -6,8 +6,7 @@
 <p class="asset-subtitle">April 3, 2015</p>
 
 <section class="quadrant-wrapper--full">
-
-  <%= render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
+  <%= render_many(@gallery.images,
                   name: :image,
                   in: "quadrant",
                   assigns: [link_to: "gallery-image"]) %>
