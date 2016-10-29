@@ -1,12 +1,12 @@
 <section class="single-wrapper">
   <a href="solo-image">
     <div class="single"
-         style="background-image: url(<%= image(@entity) %>);">
+         style="background-image: url(<%= image(@entity.image) %>);">
     </div>
   </a>
 
   <div class="asset-wrapper">
-    <p class="asset-title">London</p>
-    <p class="asset-subtitle">March 1, 2015</p>
+    <p class="asset-title"><%= @entity.title %></p>
+    <p class="asset-subtitle"><%= @entity.subtitle %></p>
   </div>
 </section>

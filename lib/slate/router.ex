@@ -7,17 +7,27 @@ defmodule Slate.Router do
   plug :match
   plug :dispatch
 
-  @images [%Image{image: "london.jpg"},
+  @images [%Image{image: "london.jpg",
+                  title: "London",
+                  subtitle: "March 1, 2015"},
            %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
                     title: "Madeira",
                     subtitle: "March 16, 2015"},
-           %Image{image: "spring.jpg"},
+           %Image{image: "spring.jpg",
+                  title: "Spring",
+                  subtitle: "April 4, 2016"},
            %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
                     title: "Tenerife",
                     subtitle: "November 7, 2014"},
-           %Image{image: "waves.jpg"},
-           %Image{image: "outcropping.jpg"},
-           %Image{image: "beach.jpg"}
+           %Image{image: "waves.jpg",
+                  title: "Waves",
+                  subtitle: "March 23, 2014"},
+           %Image{image: "outcropping.jpg",
+                  title: "Outcropping",
+                  subtitle: "July 17, 2014"},
+           %Image{image: "beach.jpg",
+                  title: "Beach",
+                  subtitle: "August 29, 2015"}
          ]
 
   get "/" do
