@@ -5,24 +5,28 @@ defmodule Templating do
       @templates unquote(location)
       @before_compile Templating
 
-      def render(template), do: render(template, [])
-
-      def render_many(collection, [name: name, in: template]) do
-        Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
+      def render_many(collection, opts) do
+        name = Keyword.fetch!(opts, :name)
+        extras = fn(element) ->  expand_extras(opts, name, element) end
+        predicate = Keyword.get(opts, :selecting, fn(_) -> Keyword.fetch!(opts, :in) end)
+        template = Keyword.fetch(opts, :in)
+        Enum.map(collection, &render(predicate.(&1), extras.(&1)))
       end
 
-      def render_many(collection, [name: name, selecting: predicate]) do
-        Enum.map(collection, &render(predicate.(&1), Keyword.new([{name, &1}])))
+      defp expand_extras(opts, name, element) do
+        opts
+        |> Keyword.get(:assigns, [])
+        |> Keyword.merge(to_list(name, element))
       end
 
-      def render_many(collection, [name: name, pick: picker, mapping: mapper]) do
-        Enum.map(collection, &render(picker.(&1), Keyword.new([{name, mapper.(&1)}])))
-      end
+      defp to_list(name, value), do: Keyword.new([{name, value}])
 
       def within_layout(name, assigns) do
         inner = render(name, assigns)
         render("layout", [content: inner])
       end
+
+      def render(template), do: render(template, [])
     end
   end
 
