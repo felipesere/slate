@@ -1,5 +1,5 @@
 <section class="single-wrapper">
-  <a href="solo-image">
+  <a href="solo-image/<%= @entity.id %>">
     <div class="single"
          style="background-image: url(<%= image(@entity.image) %>);">
     </div>

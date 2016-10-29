@@ -63,7 +63,15 @@ defmodule Slate.Router do
   end
 
   get "/solo-image" do
-    render_template(conn, "solo-image")
+    render_template(conn, "solo-image", [image: Map.fetch!(@images, 1)])
+  end
+
+  get "/solo-image/:id" do
+    {id, _} = Integer.parse(id)
+    case Map.fetch(@images, id) do
+      {:ok, image} -> View.within_layout("solo-image", [image: image]) |> respond(conn)
+      _ -> not_found(conn)
+    end
   end
 
   def render_template(conn, name, assigns \\ []) do

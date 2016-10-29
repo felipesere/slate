@@ -1,11 +1,11 @@
 <%= render("back-button") %>
 
-<h1 class="page-title">Strength in calmness</h1>
-<p class="asset-subtitle">April 3, 2015</p>
+<h1 class="page-title"><%= @image.title %></h1>
+<p class="asset-subtitle"><%= @image.subtitle %></p>
 
 <section class="single-wrapper--full">
   <div class="single single"
-       style="background-image: url(<%= image("strength.jpg")%>);">
+       style="background-image: url(<%= image(@image.image)%>);">
   </div>
 </section>
 
