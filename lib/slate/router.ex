@@ -7,17 +7,38 @@ defmodule Slate.Router do
   plug :match
   plug :dispatch
 
+  @images [%Image{image: "london.jpg"},
+           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]},
+           %Image{image: "spring.jpg"},
+           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]},
+           %Image{image: "waves.jpg"},
+           %Image{image: "outcropping.jpg"},
+           %Image{image: "beach.jpg"}
+         ]
+
   get "/" do
-    render_template(conn, "index")
+    render_template(conn, "index", [entities: @images])
   end
 
-  get "/:page" when page in ["gallery", "gallery-image", "index", "solo-image"] do
-    render_template(conn, page)
+  get "/gallery" do
+    render_template(conn, "gallery")
   end
 
-  def render_template(conn, name) do
+  get "/gallery-image" do
+    render_template(conn, "gallery-image")
+  end
+
+  get "/index" do
+    render_template(conn, "index", [entities: @images])
+  end
+
+  get "/solo-image" do
+    render_template(conn, "solo-image")
+  end
+
+  def render_template(conn, name, assigns \\ []) do
     name
-    |> View.within_layout([])
+    |> View.within_layout(assigns)
     |> respond(conn)
   end
 

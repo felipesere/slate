@@ -1,10 +1,11 @@
 <section class="content-wrapper">
 
-  <%= render("single-image", [image: "london.jpg"]) %>
-  <%= render("quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
-  <%= render("single-image", [image: "spring.jpg"]) %>
-  <%= render("quadrant-wrapper", [images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]]) %>
-  <%= render("single-image", [image: "spring.jpg"]) %>
-  <%= render("single-image", [image: "spring.jpg"]) %>
-  <%= render("single-image", [image: "spring.jpg"]) %>
+  <%= render_many(@entities, name: :entity,
+                             selecting: fn(entity) -> case entity do
+                                                  %Image{} -> "single-image"
+                                                  %Gallery{} -> "quadrant-wrapper"
+                             end
+                             end) %>
+
+
 </section>
