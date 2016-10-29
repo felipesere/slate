@@ -1,6 +1,4 @@
-<div class="back-container">
-  <a href="index" class="back-container__text clean-link"><img src="<%= image("arrow-left.svg")%>">Home</a>
-</div>
+<%= render("back-button") %>
 
 <h1 class="page-title">Strength in calmness</h1>
 <p class="asset-subtitle">April 3, 2015</p>

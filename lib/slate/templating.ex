@@ -5,6 +5,8 @@ defmodule Templating do
       @templates unquote(location)
       @before_compile Templating
 
+      def render(template), do: render(template, [])
+
       def render_many(collection, [name: name, in: template]) do
         Enum.map(collection, &render(template, Keyword.new([{name, &1}])))
       end

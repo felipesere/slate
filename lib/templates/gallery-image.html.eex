@@ -1,6 +1,4 @@
-<div class="back-container">
-  <a href="gallery" class="back-container__text clean-link"><img src="<%= image("arrow-left.svg") %>">Madiera</a>
-</div>
+<%= render("back-button") %>
 
 <section class="single-wrapper--full">
   <div class="single single"
