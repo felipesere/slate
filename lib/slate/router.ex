@@ -8,9 +8,13 @@ defmodule Slate.Router do
   plug :dispatch
 
   @images [%Image{image: "london.jpg"},
-           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]},
+           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
+                    title: "Madeira",
+                    subtitle: "March 16, 2015"},
            %Image{image: "spring.jpg"},
-           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"]},
+           %Gallery{images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
+                    title: "Tenerife",
+                    subtitle: "November 7, 2014"},
            %Image{image: "waves.jpg"},
            %Image{image: "outcropping.jpg"},
            %Image{image: "beach.jpg"}

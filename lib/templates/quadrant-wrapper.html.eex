@@ -3,8 +3,8 @@
   <%= render_many(@entity.images, name: :image, in: "quadrant") %>
 
   <div class="asset-wrapper">
-    <p class="asset-description">10 images</p>
-    <p class="asset-title">Madiera</p>
-    <p class="asset-subtitle">March 16, 2015</p>
+    <p class="asset-description"><%= length(@entity.images) %> images</p>
+    <p class="asset-title"><%= @entity.title %></p>
+    <p class="asset-subtitle"><%= @entity.subtitle %></p>
   </div>
 </section>
