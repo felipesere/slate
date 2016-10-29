@@ -7,4 +7,7 @@
 
 <section class="quadrant-wrapper--full">
 
-  <%= render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"], name: :image, in: "quadrant") %>
+  <%= render_many(["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
+                  name: :image,
+                  in: "quadrant",
+                  assigns: [link_to: "gallery-image"]) %>

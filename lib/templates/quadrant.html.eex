@@ -1,4 +1,4 @@
-<a href="gallery-image">
+<a href="<%= @link_to %>">
   <div class="quadrant"
        style= "background-image: url(<%= image(@image)%>);">
   </div>

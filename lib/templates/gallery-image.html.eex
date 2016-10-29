@@ -2,6 +2,6 @@
 
 <section class="single-wrapper--full">
   <div class="single single"
-       style="background-image: url(<%= image("outcropping.jpg") %>);">
+       style="background-image: url(<%= image("waves.jpg") %>);">
   </div>
 </section>
