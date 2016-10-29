@@ -1,3 +1,3 @@
   defmodule Image do
-    defstruct [:image, :title, :subtitle]
+    defstruct [:id, :image, :title, :subtitle]
   end
