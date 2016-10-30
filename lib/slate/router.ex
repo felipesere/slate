@@ -8,12 +8,13 @@ defmodule Slate.Router do
   plug :dispatch
 
   get "/" do
-    render_template(conn, "index", [entities: Repo.all])
+    "index"
+    |> View.within_layout([entities: Repo.all])
+    |> respond(conn)
   end
 
   get "/gallery/:id" do
     {id, _} = Integer.parse(id)
-
     case Repo.gallery(id) do
       {:ok, gallery} -> View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
       _ -> not_found(conn)
@@ -26,12 +27,6 @@ defmodule Slate.Router do
       {:ok, image} -> View.within_layout("solo-image", [image: image]) |> respond(conn)
       _ -> not_found(conn)
     end
-  end
-
-  def render_template(conn, name, assigns \\ []) do
-    name
-    |> View.within_layout(assigns)
-    |> respond(conn)
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)
