@@ -1,4 +1,8 @@
-<a href="<%= "/solo-image/#{@image.id}" %>">
+<%= if @link_to != nil do %>
+  <a href="<%= @link_to %>">
+<% else %>
+  <a href="<%= "/solo-image/#{@image.id}" %>">
+<% end %>
   <div class="quadrant"
        style= "background-image: url(<%= image(@image.image)%>);">
   </div>
