@@ -6,5 +6,4 @@
 <section class="quadrant-wrapper--full">
   <%= render_many(@gallery.images,
                   name: :image,
-                  in: "quadrant",
-                  assigns: [link_to: "gallery-image"]) %>
+                  in: "quadrant") %>
