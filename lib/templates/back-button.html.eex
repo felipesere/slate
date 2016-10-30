@@ -1,3 +1,3 @@
 <div class="back-container">
-  <a href="/index" class="back-container__text clean-link"><img src="<%= image("arrow-left.svg")%>">Home</a>
+  <a href="/" class="back-container__text clean-link"><img src="<%= image("arrow-left.svg")%>">Home</a>
 </div>
