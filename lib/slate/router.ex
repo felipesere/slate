@@ -62,14 +62,6 @@ defmodule Slate.Router do
     end
   end
 
-  get "/gallery-image" do
-    render_template(conn, "gallery-image")
-  end
-
-  get "/index" do
-    render_template(conn, "index", [entities: Map.values(@images)])
-  end
-
   get "/solo-image/:id" do
     {id, _} = Integer.parse(id)
     case Map.fetch(@images, id) do
