@@ -1,8 +1,8 @@
 <section class="quadrant-wrapper">
 
-  <%= render_many(@entity.images, name: :image, 
+  <%= render_many(@entity.images, name: :image,
                                   in: "quadrant",
-                                  assigns: [link_to: "gallery"]) %>
+                                  assigns: [link_to: "gallery/#{@entity.id}"]) %>
 
   <div class="asset-wrapper">
     <p class="asset-description"><%= length(@entity.images) %> images</p>

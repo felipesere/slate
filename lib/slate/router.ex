@@ -12,18 +12,10 @@ defmodule Slate.Router do
       image: "london.jpg",
       title: "London",
       subtitle: "March 1, 2015"},
-    2 => %Gallery{id: 2,
-      images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
-      title: "Madeira",
-      subtitle: "March 16, 2015"},
     3 => %Image{id: 3,
       image: "spring.jpg",
       title: "Spring",
       subtitle: "April 4, 2016"},
-    4 => %Gallery{id: 4,
-      images: ["rocks.jpg", "beach.jpg", "waves.jpg", "outcropping.jpg"],
-      title: "Tenerife",
-      subtitle: "November 7, 2014"},
     5 => %Image{id: 5,
       image: "waves.jpg",
       title: "Waves",
@@ -35,21 +27,37 @@ defmodule Slate.Router do
     7 => %Image{id: 7,
       image: "beach.jpg",
       title: "Beach",
-      subtitle: "August 29, 2015"}
-  }
+      subtitle: "August 29, 2015"},
+    8 => %Image{id: 8,
+      image: "rocks.jpg",
+      title: "Rocks",
+      subtitle: "August 31, 2014"},
+    2 => %Gallery{id: 2,
+      images: [8, 7, 5, 6],
+      title: "Madeira",
+      subtitle: "March 16, 2015"},
+    4 => %Gallery{id: 4,
+      images: [8, 7, 5, 6],
+      title: "Tenerife",
+      subtitle: "November 7, 2014"}
+    }
 
   get "/" do
-    render_template(conn, "index", [entities: Map.values(@images)])
+    all = Enum.map(Map.values(@images),
+                   fn(%Gallery{} = g) -> expand(g)
+                      (x) -> x end)
+
+    render_template(conn, "index", [entities: all])
   end
 
-  get "/gallery" do
-    render_template(conn, "gallery", [gallery: Map.fetch!(@images, 2)])
+  def expand(gallery = %Gallery{images: image_ids}) do
+    %{ gallery | images: Enum.map(image_ids, fn(id) -> Map.fetch!(@images, id) end)}
   end
 
   get "/gallery/:id" do
     {id, _} = Integer.parse(id)
     case Map.fetch(@images, id) do
-      {:ok, gallery} -> View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
+      {:ok, gallery} -> View.within_layout("gallery", [gallery: expand(gallery)]) |> respond(conn)
       _ -> not_found(conn)
     end
   end

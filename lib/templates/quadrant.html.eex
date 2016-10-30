@@ -1,5 +1,5 @@
 <a href="<%= @link_to %>">
   <div class="quadrant"
-       style= "background-image: url(<%= image(@image)%>);">
+       style= "background-image: url(<%= image(@image.image)%>);">
   </div>
 </a>
