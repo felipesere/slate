@@ -1,3 +1,3 @@
 defmodule Gallery do
-  defstruct [:id, :images, :title, :subtitle]
+  defstruct id: nil, images: [], title: nil, subtitle: nil
 end

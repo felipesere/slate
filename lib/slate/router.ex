@@ -23,7 +23,16 @@ defmodule Slate.Router do
     6 => %Image{id: 6,
       image: "outcropping.jpg",
       title: "Outcropping",
-      subtitle: "July 17, 2014"},
+      subtitle: "July 17, 2014",
+      description: "This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere.",
+      exif: %Exif{aperture: 11,
+                  camera: "Canon EOS 70D",
+                  focal_length: 10,
+                  iso: 100,
+                  shutter_speed: "30s"
+                }
+
+    },
     7 => %Image{id: 7,
       image: "beach.jpg",
       title: "Beach",

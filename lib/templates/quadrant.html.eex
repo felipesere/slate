@@ -1,4 +1,4 @@
-<%= if @link_to != nil do %>
+<%= if @link_to do %>
   <a href="<%= @link_to %>">
 <% else %>
   <a href="<%= "/solo-image/#{@image.id}" %>">

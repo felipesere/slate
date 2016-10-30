@@ -1,0 +1,7 @@
+<ul class="clean-list exif-data">
+  <li>Aperture: ƒ/<%= @exif.aperture %></li>
+  <li>Camera: <%= @exif.camera %></li>
+  <li>Focal length: <%= @exif.focal_length %>mm</li>
+  <li>ISO: <%= @exif.iso %></li>
+  <li>Shutter speed: <%= @exif.shutter_speed %></li>
+</ul>

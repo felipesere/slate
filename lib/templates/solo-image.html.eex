@@ -9,12 +9,10 @@
   </div>
 </section>
 
-<p class="image-description">This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere.</p>
+<%= if @image.description do %>
+  <p class="image-description"><%= @image.description %></p>
+<% end %>
 
-<ul class="clean-list exif-data">
-  <li>Aperture: ƒ/11</li>
-  <li>Camera: Canon EOS 70D</li>
-  <li>Focal length: 10mm</li>
-  <li>ISO: 100</li>
-  <li>Shutter speed: 30s</li>
-</ul>
+<%= if @image.exif do %>
+  <%= render("exif", [exif: @image.exif]) %>
+<% end %>
