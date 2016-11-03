@@ -3,6 +3,7 @@ var async = require('async');
 var AWS = require('aws-sdk');
 var gm = require('gm').subClass({"imageMagick" : true});
 var util = require('util');
+var path = require('path');
 
 var s3 = new AWS.S3();
 
@@ -35,7 +36,7 @@ module.exports.resize = (event, context, callback) => {
         console.log("Uploading back to S3");
         s3.putObject({
           Bucket: s3data.bucket.name,
-          Key: "small/"+s3data.object.key,
+          Key: "small/"+path.basename(s3data.object.key),
           Body: data,
           ContentType: contentType
         }, next);
