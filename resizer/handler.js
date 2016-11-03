@@ -35,7 +35,7 @@ module.exports.resize = (event, context, callback) => {
         console.log("Uploading back to S3");
         s3.putObject({
           Bucket: s3data.bucket.name,
-          Key: "images/small/"+s3data.object.key,
+          Key: "small/"+s3data.object.key,
           Body: data,
           ContentType: contentType
         }, next);

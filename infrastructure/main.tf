@@ -119,6 +119,37 @@ resource "aws_iam_role" "iam_for_lambda" {
   ]
 }
 EOF
+
+}
+
+resource "aws_iam_role_policy" "allow_lambda_access_to_s3" {
+    name = "lambda_to_s3"
+    role = "${aws_iam_role.iam_for_lambda.id}"
+    policy = <<EOF
+{
+      "Version": "2012-10-17",
+        "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "logs:*"
+          ],
+          "Resource": "arn:aws:logs:*:*:*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+          "s3:PutObject"
+          ],
+          "Resource": [
+            "arn:aws:s3:::${var.bucket_name}",
+            "arn:aws:s3:::${var.bucket_name}/*"
+          ]
+        }
+        ]
+}
+EOF
 }
 
 resource "aws_lambda_permission" "allow_bucket" {
@@ -144,6 +175,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     lambda_function {
         lambda_function_arn = "${aws_lambda_function.func.arn}"
         events = ["s3:ObjectCreated:*"]
+        filter_prefix = "images/"
         filter_suffix = ".jpg"
     }
 }
