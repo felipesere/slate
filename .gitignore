@@ -22,3 +22,7 @@ infrastructure/*.plan
 infrastructure/variables.tf
 
 **/*.tfstate
+**/node_modules
+**/.serverless
+
+*.backup
