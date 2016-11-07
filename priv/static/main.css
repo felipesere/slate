@@ -254,3 +254,33 @@ body {
   text-transform: uppercase; }
   .back-container__text img {
     padding-right: 5px; }
+
+nav {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  nav:last-child {
+    margin-right: 0; }
+
+.input_form {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%; }
+  .input_form:last-child {
+    margin-right: 0; }
+  .input_form label {
+    float: left;
+    display: block;
+    margin-right: 3.16844%;
+    width: 31.22104%; }
+    .input_form label:last-child {
+      margin-right: 0; }
+  .input_form input {
+    float: left;
+    display: block;
+    margin-right: 3.16844%;
+    width: 65.61052%; }
+    .input_form input:last-child {
+      margin-right: 0; }

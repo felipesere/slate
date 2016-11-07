@@ -78,3 +78,19 @@ body {
     padding-right: 5px;
   }
 }
+
+nav {
+  @include span-columns(3);
+}
+
+.input_form {
+
+  @include span-columns(9);
+  label {
+    @include span-columns(3 of 9);
+  }
+
+  input {
+    @include span-columns(6 of 9);
+  }
+}

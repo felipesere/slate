@@ -9,14 +9,14 @@ defmodule Slate.Router do
 
   get "/" do
     "index"
-    |> View.within_layout([entities: Repo.all])
+    |> Gallery.View.within_layout([entities: Repo.all])
     |> respond(conn)
   end
 
   get "/gallery/:id" do
     {id, _} = Integer.parse(id)
     case Repo.gallery(id) do
-      {:ok, gallery} -> View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
+      {:ok, gallery} -> Gallery.View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
       _ -> not_found(conn)
     end
   end
@@ -24,9 +24,15 @@ defmodule Slate.Router do
   get "/solo-image/:id" do
     {id, _} = Integer.parse(id)
     case Repo.image(id) do
-      {:ok, image} -> View.within_layout("solo-image", [image: image]) |> respond(conn)
+      {:ok, image} -> Gallery.View.within_layout("solo-image", [image: image]) |> respond(conn)
       _ -> not_found(conn)
     end
+  end
+
+  get "/admin" do
+    "admin"
+    |> Admin.View.within_layout([])
+    |> respond(conn)
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)

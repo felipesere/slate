@@ -1,8 +1,7 @@
 defmodule Templating do
 
-  defmacro __using__([templates: location]) do
+  defmacro __using__(_) do
     quote do
-      @templates unquote(location)
       @before_compile Templating
 
       def render_many(collection, opts) do

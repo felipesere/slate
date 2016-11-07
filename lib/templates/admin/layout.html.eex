@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
+    <link type="image/ico" href="<%=image("camera-favicon.ico")%>" rel="icon"/>
+  </head>
+
+  <body>
+    <section class="container">
+      <header>
+        <h1 class="title"><a href="/" class="clean-link">Admin</a></h1>
+      </header>
+
+      <nav>
+        <button>Add new image</button>
+
+        <ol>
+          <li>London</li>
+          <li>Spring</li>
+          <li>Madeira</li>
+          <li>Tenerife</li>
+          <li>Waves</li>
+          <li>Outcropping</li>
+          <li>Beach</li>
+          <li>Rocks</li>
+        </ol>
+      </nav>
+
+      <form class="input_form">
+        <label for="title">Title</label><input name="title" type="text" value="London"/></br>
+        <label for="description">Description</label><input name="description" type="text" value="This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere."/>
+        </br>
+        <label for="when">Date</label><input name="when" type="date"/></br>
+        <label for="image">Image</label><input name="image" type="file"/></br>
+        <label for="extract_exif">Extract EXIF</label><input name="extract_exif" type="checkbox"/></br>
+      </form>
+    </section>
+  </body>
+</html>
