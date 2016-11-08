@@ -1,5 +1,5 @@
 defmodule Mix.Tasks.Watcher do
-  use ExFSWatch, dirs: ["lib/"]
+  use ExFSWatch, dirs: ["lib/", "style/"]
   use Mix.Task
 
   def run(_) do
@@ -17,22 +17,17 @@ defmodule Mix.Tasks.Watcher do
   end
 
   def reload(file) do
-
+    IO.puts("Reloading #{file}")
     case Path.extname(file) do
       ".ex" -> reload_regular_file(file)
       ".eex" -> reload_template(file)
+      ".scss" -> reload_style(file)
       _ -> IO.puts file
     end
   end
 
-  def reload_regular_file(file) do
-    try do
-      Code.load_file(file)
-    rescue
-      e -> IO.inspect(e)
-    end
-  end
-
+  def reload_regular_file(file), do: Code.load_file(file)
+  def reload_style(_file), do: Mix.Tasks.BuildAssets.run
   def reload_template(_file) do
     Code.load_file("lib/templates/gallery/view.ex")
     Code.load_file("lib/templates/admin/view.ex")
