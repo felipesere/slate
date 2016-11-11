@@ -7,7 +7,8 @@
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/public/main.css">
     <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
-    <link type="image/ico" href="<%=image("camera-favicon.ico")%>" rel="icon"/>
+    <link type="image/ico" href="<%= image("camera-favicon.ico")%>" rel="icon"/>
+    <title>Admin</title>
   </head>
 
   <body>
@@ -32,12 +33,21 @@
       </nav>
 
       <form class="input_form">
-        <label for="title">Title</label><input name="title" type="text" value="London"/></br>
-        <label for="description">Description</label><input name="description" type="text" value="This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere."/>
-        </br>
-        <label for="when">Date</label><input name="when" type="date"/></br>
-        <label for="image">Image</label><input name="image" type="file"/></br>
-        <label for="extract_exif">Extract EXIF</label><input name="extract_exif" type="checkbox"/></br>
+        <div class="row">
+          <label for="title">Title</label><input id="title" type="text" value="London"/>
+        </div>
+        <div class="row">
+          <label for="description">Description</label><input id="description" type="text" value="This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere."/>
+        </div>
+        <div class="row">
+          <label for="when">Date</label><input id="when" type="date"/>
+        </div>
+        <div class="row">
+          <label for="image">Image</label><input id="image" type="file"/>
+        </div>
+        <div class="row">
+          <label for="extract_exif">Extract EXIF</label><input id="extract_exif" type="checkbox"/>
+        </div>
       </form>
     </section>
   </body>
