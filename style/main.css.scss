@@ -81,9 +81,24 @@ body {
 
 nav {
   @include span-columns(2);
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    background-color: rgba(192,192,192,0.4);
+    border-bottom: 1px solid rgba(192,192,192,0.7);
+    margin-bottom: 5px;
+  }
 }
 
 .input_form {
+  @include span-columns(10);
+}
+
+.row {
   @include span-columns(10);
 
   label {
