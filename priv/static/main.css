@@ -259,7 +259,7 @@ nav {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 23.23176%; }
+  width: 14.70196%; }
   nav:last-child {
     margin-right: 0; }
 
@@ -267,20 +267,23 @@ nav {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 74.41059%; }
+  width: 82.94039%; }
   .input_form:last-child {
     margin-right: 0; }
   .input_form label {
     float: left;
     display: block;
-    margin-right: 3.16844%;
-    width: 31.22104%; }
+    margin-right: 2.84259%;
+    width: 17.72593%; }
     .input_form label:last-child {
       margin-right: 0; }
   .input_form input {
     float: left;
     display: block;
-    margin-right: 3.16844%;
-    width: 65.61052%; }
+    margin-right: 2.84259%;
+    width: 79.43148%;
+    margin-right: 0; }
     .input_form input:last-child {
       margin-right: 0; }
+
+/*# sourceMappingURL=main.css.map */

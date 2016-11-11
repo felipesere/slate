@@ -80,17 +80,18 @@ body {
 }
 
 nav {
-  @include span-columns(3);
+  @include span-columns(2);
 }
 
 .input_form {
+  @include span-columns(10);
 
-  @include span-columns(9);
   label {
-    @include span-columns(3 of 9);
+    @include span-columns(2 of 10);
   }
 
   input {
-    @include span-columns(6 of 9);
+    @include span-columns(8 of 10);
+    @include omega()
   }
 }
