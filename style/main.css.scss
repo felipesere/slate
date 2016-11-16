@@ -1,5 +1,7 @@
 @import 'bourbon/bourbon';
 @import 'neat/neat';
+@import 'bitters/base';
+@import 'bitters/buttons';
 
 @import 'base/typography';
 @import 'base/images';
@@ -97,19 +99,6 @@ nav {
 }
 
 .create_new_image {
-  background-color: rgba(0,115,255,0.5);
-  border-bottom: 1px solid rgba(0,115,255,1.0);
-  margin-bottom: 1em;
-  text-align: center;
-  padding-top: 5px;
-
-  border: 0;
-  box-shadow:none;
-  border-radius: 0px;
-
-  font-family: 'Khula', sans-serif;
-  font-size: 16px;
-
   width: 100%;
 }
 
