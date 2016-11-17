@@ -1,4 +1,4 @@
 defmodule ExampleView do
-  use Templating, templates: "."
+  use Templating, layout: "the_layout"
 
 end

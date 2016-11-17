@@ -1,6 +1,11 @@
 defmodule ViewTest do
   use ExUnit.Case
 
+  test "renders within a template" do
+    result = ExampleView.within_layout("index", [where: "there"])
+    assert result == "<within>Hello there\n</within>\n"
+  end
+
   test "creates the proper function" do
     result = ExampleView.render("index", [where: "there"])
     assert result == "Hello there\n"

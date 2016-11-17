@@ -1,6 +1,7 @@
 defmodule Templating do
 
-  defmacro __using__(_) do
+  defmacro __using__(opts) do
+    layout = Keyword.get(opts, :layout, "layout")
     quote do
       @before_compile Templating
 
@@ -22,7 +23,7 @@ defmodule Templating do
 
       def within_layout(name, assigns) do
         inner = render(name, assigns)
-        render("layout", [content: inner])
+        render(unquote(layout), [content: inner])
       end
 
       def render(template), do: render(template, [])
