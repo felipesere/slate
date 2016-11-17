@@ -13,9 +13,8 @@
 
   <body>
     <section class="container">
-      <header>
-        <h1 class="title"><a href="/" class="clean-link">Admin</a></h1>
-      </header>
+
+      <%= render("header") %>
 
       <%= render("navbar") %>
 

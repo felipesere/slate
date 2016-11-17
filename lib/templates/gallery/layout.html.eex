@@ -7,21 +7,14 @@
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/public/main.css">
     <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
-    <link type="image/ico" href="<%=image("camera-favicon.ico")%>" rel="icon"/>
+    <link type="image/ico" href="<%= image("camera-favicon.ico")%>" rel="icon"/>
+    <title>Gallery</title>
   </head>
 
   <body>
     <section class="container">
-      <header>
-        <h1 class="title"><a href="/" class="clean-link">Felipe Sere</a></h1>
-        <h2 class="subtitle">I picked up photography while living in Kenya with my parents about twelve years ago. My current challenge is to use a 50mm fixed-lens more and more.</h2>
 
-        <div class="social-container">
-          <a href="twitter.com"><img src="<%= image("twitter.svg")%>" class="social"></a>
-          <a href="facebook.com"><img src="<%= image("facebook.svg")%>" class="social"></a>
-          <a href="github.com"><img src="<%= image("github.svg")%>" class="social"></a>
-        </div>
-      </header>
+      <%= render("header") %>
 
       <%= @content %>
 
