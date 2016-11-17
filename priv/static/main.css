@@ -428,4 +428,7 @@ nav {
     .row input:last-child {
       margin-right: 0; }
 
+[type="checkbox"] {
+  margin-left: 0px; }
+
 /*# sourceMappingURL=main.css.map */

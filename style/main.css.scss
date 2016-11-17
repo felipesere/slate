@@ -118,3 +118,7 @@ nav {
     @include omega()
   }
 }
+
+[type="checkbox"] {
+  margin-left: 0px;
+}

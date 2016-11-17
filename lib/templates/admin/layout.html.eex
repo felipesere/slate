@@ -53,6 +53,9 @@
           <label for="extract_exif">Extract EXIF</label>
           <input id="extract_exif" type="checkbox"/>
         </div>
+        <div class="row">
+          <input type="submit" value="Upload!" />
+        </div>
       </form>
     </section>
   </body>
