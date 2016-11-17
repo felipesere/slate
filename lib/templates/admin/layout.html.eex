@@ -17,46 +17,10 @@
         <h1 class="title"><a href="/" class="clean-link">Admin</a></h1>
       </header>
 
-      <nav>
-        <button class="create_new_image">Add new image</button>
+      <%= render("navbar") %>
 
-        <ul>
-          <li>London</li>
-          <li>Spring</li>
-          <li>Madeira</li>
-          <li>Tenerife</li>
-          <li>Waves</li>
-          <li>Outcropping</li>
-          <li>Beach</li>
-          <li>Rocks</li>
-        </ul>
-      </nav>
+      <%= render("add_new_image") %>
 
-      <form class="input_form">
-        <div class="row">
-          <label for="title">Title</label>
-          <input id="title" type="text" value="London"/>
-        </div>
-        <div class="row">
-          <label for="description">Description</label>
-          <input id="description" type="text" value="This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere."/>
-        </div>
-        <div class="row">
-          <label for="when">Date</label>
-          <input id="when" type="date"/>
-        </div>
-        <div class="row">
-          <label for="image">Image</label>
-          <input id="image" type="file"/>
-        </div>
-        <div class="row">
-          <label for="extract_exif">Extract EXIF</label>
-          <input id="extract_exif" type="checkbox"/>
-        </div>
-        <div class="row">
-          <input type="submit" value="Upload!" />
-        </div>
-      </form>
     </section>
   </body>
 </html>
