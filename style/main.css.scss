@@ -96,6 +96,11 @@ nav {
     text-align: center;
     padding-top: 5px;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .create_new_image {
@@ -122,3 +127,4 @@ nav {
 [type="checkbox"] {
   margin-left: 0px;
 }
+

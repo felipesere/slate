@@ -31,7 +31,7 @@ defmodule Slate.Router do
 
   get "/admin" do
     "index"
-    |> Admin.View.within_layout([])
+    |> Admin.View.within_layout([entities: Repo.all])
     |> respond(conn)
   end
 

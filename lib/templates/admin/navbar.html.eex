@@ -2,13 +2,6 @@
   <button class="create_new_image">Add new image</button>
 
   <ul>
-    <li>London</li>
-    <li>Spring</li>
-    <li>Madeira</li>
-    <li>Tenerife</li>
-    <li>Waves</li>
-    <li>Outcropping</li>
-    <li>Beach</li>
-    <li>Rocks</li>
+  <%= render_many(@entities, name: :entity, in: "edit_link") %>
   </ul>
 </nav>

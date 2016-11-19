@@ -393,6 +393,9 @@ nav {
     margin-bottom: 1em;
     text-align: center;
     padding-top: 5px; }
+  nav a {
+    text-decoration: none;
+    color: black; }
 
 .create_new_image {
   width: 100%; }
