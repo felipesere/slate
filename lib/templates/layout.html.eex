@@ -16,10 +16,6 @@
 
       <%= render("header") %>
 
-      <%= render("navbar") %>
-
-      <%= render("add_new_image") %>
-
+      <%= @content %>
     </section>
   </body>
-<

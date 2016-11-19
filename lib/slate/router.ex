@@ -30,7 +30,7 @@ defmodule Slate.Router do
   end
 
   get "/admin" do
-    "admin"
+    "index"
     |> Admin.View.within_layout([])
     |> respond(conn)
   end
