@@ -1,5 +1,5 @@
 defmodule Admin.View do
-  use Templating
+  use Templating, layout: "../layout"
   use Images
 
 end

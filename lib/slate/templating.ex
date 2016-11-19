@@ -1,9 +1,20 @@
 defmodule Templating do
 
+  def expand(layout, caller) do
+    dir = Path.dirname(caller.file)
+    "#{dir}/#{layout}.html.eex"
+  end
+
   defmacro __using__(opts) do
     layout = Keyword.get(opts, :layout, "layout")
+             |> expand(__CALLER__)
+
+    compiled_layout = EEx.compile_file(layout, [engine: EEx.SmartEngine])
+
+
     quote do
       @before_compile Templating
+      @compile :nowarn_unused_vars
 
       def render_many(collection, opts) do
         name = Keyword.fetch!(opts, :name)
@@ -26,6 +37,7 @@ defmodule Templating do
         render(unquote(layout), [content: inner])
       end
 
+      def render(unquote(layout), var!(assigns)), do: unquote(compiled_layout)
       def render(template), do: render(template, [])
     end
   end
