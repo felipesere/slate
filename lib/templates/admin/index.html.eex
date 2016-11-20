@@ -1,3 +1,5 @@
 <%= render("navbar", [entities: @entities] ) %>
 
-<%= render("add_new_image") %>
+<%= if @edited_entity != :none do %>
+  <%= render("add_new_image", [edited_entity: @edited_entity]) %>
+<%= end %>

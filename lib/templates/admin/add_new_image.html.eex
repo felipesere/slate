@@ -1,11 +1,11 @@
 <form class="input_form">
   <div class="row">
     <label for="title">Title</label>
-    <input id="title" type="text" value="London"/>
+    <input id="title" type="text" value="<%= @edited_entity.title %>"/>
   </div>
   <div class="row">
     <label for="description">Description</label>
-    <input id="description" type="text" value="This pictures was shot very early in the morning on the other side of Madeira from where we were staying. I like how the large rock looks as if were standing calmly almost proudly over the water. The clouds help in giving the entire scene a heroic atmosphere."/>
+    <input id="description" type="text" value="<%= @edited_entity.description || "" %>"/>
   </div>
   <div class="row">
     <label for="when">Date</label>

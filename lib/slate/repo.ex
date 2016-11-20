@@ -50,6 +50,14 @@ defmodule Repo do
                     (x) -> x end)
     end
 
+    def find(:none), do: :none
+    def find(id) do
+      case Integer.parse(id) do
+        {entity_id, ""} -> Map.get(@images, entity_id, :none)
+        _ -> :none
+      end
+    end
+
     def expand(gallery = %Gallery{images: image_ids}) do
       %{ gallery | images: Enum.map(image_ids, fn(id) -> Map.fetch!(@images, id) end)}
     end

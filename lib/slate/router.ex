@@ -30,8 +30,10 @@ defmodule Slate.Router do
   end
 
   get "/admin" do
+    conn = fetch_query_params(conn)
+    edited_entity = Map.get(conn.params, "entity", :none)
     "index"
-    |> Admin.View.within_layout([entities: Repo.all])
+    |> Admin.View.within_layout([entities: Repo.all, edited_entity: Repo.find(edited_entity)])
     |> respond(conn)
   end
 
