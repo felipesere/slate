@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <label for="when">Date</label>
-    <input id="when" type="date"/>
+    <input id="when" type="date" value="<%= Date.to_iso8601(@edited_entity.date) %>"/>
   </div>
   <div class="row">
     <label for="image">Image</label>
