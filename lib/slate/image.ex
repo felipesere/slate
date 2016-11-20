@@ -2,7 +2,8 @@
     defstruct id: nil, image: nil,
               title: nil, subtitle: nil,
               description: false,
-              exif: false
+              exif: false,
+              date: nil
   end
 
   defmodule Exif do
