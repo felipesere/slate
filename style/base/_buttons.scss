@@ -1,0 +1,36 @@
+@mixin button_base {
+  font: inherit;
+  padding: 7px 14px;
+  border-radius: 3px;
+
+  border: none;
+  display: inline-block;
+
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin flat_button ($background-color: #eee, $color: #333) {
+
+  @include button_base();
+
+  color: $color;
+  background: $background-color;
+
+  transition: color $base-duration $base-timing;
+
+  &:hover:not(:disabled) {
+    background: darken($background-color, 5%);
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: inset 0px 2px 5px 1px rgba(0,0,0,0.3);
+  }
+}

@@ -388,14 +388,28 @@ nav {
     list-style-type: none;
     padding: 0; }
   nav li {
-    background-color: rgba(192, 192, 192, 0.4);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.7);
-    margin-bottom: 1em;
-    text-align: center;
-    padding-top: 5px; }
+    margin-bottom: 1em; }
   nav a {
     text-decoration: none;
-    color: black; }
+    width: 100%;
+    text-align: center;
+    font: inherit;
+    padding: 7px 14px;
+    border-radius: 3px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    background: rgba(192, 192, 192, 0.4);
+    transition: color 150ms ease; }
+    nav a:disabled {
+      cursor: not-allowed; }
+    nav a:focus {
+      outline: none; }
+    nav a:hover:not(:disabled) {
+      background: rgba(179, 179, 179, 0.4); }
+    nav a:active:not(:disabled) {
+      box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.3); }
 
 .create_new_image {
   width: 100%; }
