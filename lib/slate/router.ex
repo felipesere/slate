@@ -5,6 +5,7 @@ defmodule Slate.Router do
 
   plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug Plug.Parsers, parsers: [:multipart]
+  plug Plug.Logger, log: :debug
   plug :match
   plug :dispatch
 
@@ -39,7 +40,7 @@ defmodule Slate.Router do
   end
 
   post "/admin/gallery" do
-    responsd("hi there", conn)
+    respond("hi there", conn)
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)

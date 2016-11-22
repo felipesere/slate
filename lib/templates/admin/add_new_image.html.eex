@@ -1,15 +1,15 @@
 <form class="input_form" action="/admin/gallery" method="post" enctype="multipart/form-data" >
   <div class="row">
     <label for="title">Title</label>
-    <input id="title" type="text" value="<%= @edited_entity.title %>"/>
+    <input id="title" type="text" name="title" value="<%= @edited_entity.title %>"/>
   </div>
   <div class="row">
     <label for="description">Description</label>
-    <input id="description" type="text" value="<%= @edited_entity.description || "" %>"/>
+    <input id="description" type="text" name="description" value="<%= @edited_entity.description || "" %>"/>
   </div>
   <div class="row">
     <label for="when">Date</label>
-    <input id="when" type="date" value="<%= Date.to_iso8601(@edited_entity.date) %>"/>
+    <input id="when" type="date" name="when" value="<%= Date.to_iso8601(@edited_entity.date) %>"/>
   </div>
   <div class="row">
     <label for="image">Image</label>
@@ -17,7 +17,7 @@
   </div>
   <div class="row">
     <label for="extract_exif">Extract EXIF</label>
-    <input id="extract_exif" type="checkbox"/>
+    <input id="extract_exif" type="checkbox" name="extract_exif"/>
   </div>
   <div class="row">
     <input type="submit" value="Upload!" />
