@@ -5,6 +5,7 @@ defmodule AdminTests do
     conn = get("/")
 
     assert conn.status == 200
+    assert body(conn) |> Floki.find("title") |> children() == ["Gallery"]
     assert body(conn) |> Floki.find(".asset-title") |> children() == ["London", "Madeira", "Spring", "Tenerife", "Waves", "Outcropping", "Beach", "Rocks"]
   end
 
