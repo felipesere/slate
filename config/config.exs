@@ -2,15 +2,9 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :ex_aws,
-  access_key_id: "ABC_ACCESS_KEY",
-  secret_access_key: "SECRET_KEY_PASSWORD"
-
-config :ex_aws, :s3, host: "localhost:9000", scheme: "http://"
-
 config :slate,
   image_host: "http://s3.amazonaws.com"
-        
+
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

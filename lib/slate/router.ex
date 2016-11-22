@@ -1,7 +1,6 @@
 defmodule Slate.Router do
   use Plug.Router
   use Plug.Builder
-  alias ExAws.S3
 
   plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug Plug.Parsers, parsers: [:multipart]
