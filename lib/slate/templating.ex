@@ -6,15 +6,14 @@ defmodule Templating do
   end
 
   defmacro __using__(opts) do
-    layout = Keyword.get(opts, :layout, "layout")
-             |> expand(__CALLER__)
+    layout = Keyword.get(opts, :layout, "layout") |> expand(__CALLER__)
 
     compiled_layout = EEx.compile_file(layout, [engine: EEx.SmartEngine])
-
 
     quote do
       @before_compile Templating
       @compile :nowarn_unused_vars
+      @external_resource unquote(layout)
 
       def render_many(collection, opts) do
         name = Keyword.fetch!(opts, :name)
