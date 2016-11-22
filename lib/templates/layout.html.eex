@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/public/main.css">
     <link href="https://fonts.googleapis.com/css?family=Khula:300,400,600" rel="stylesheet">
     <link type="image/ico" href="<%= image("camera-favicon.ico")%>" rel="icon"/>
-    <title>Gallery</title>
+    <title><%= render(:title) %></title>
   </head>
 
   <body>

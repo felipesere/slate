@@ -9,6 +9,13 @@ defmodule AdminTests do
     assert body(conn) |> Floki.find(".asset-title") |> children() == ["London", "Madeira", "Spring", "Tenerife", "Waves", "Outcropping", "Beach", "Rocks"]
   end
 
+  test "GET /admin" do
+    conn = get("/admin")
+
+    assert conn.status == 200
+    assert body(conn) |> Floki.find("title") |> children() == ["Admin"]
+  end
+
   test "single page" do
     conn = get("/solo-image/6")
 
