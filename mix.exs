@@ -24,7 +24,8 @@ defmodule Slate.Mixfile do
       {:poison, "~> 2.0"},
       {:hackney, "~> 1.6"},
       {:sweet_xml, "~> 0.6.2"},
-      {:exfswatch, "~> 0.1.1"}
+      {:exfswatch, "~> 0.1.1"},
+      {:floki, "~> 0.11.0", only: [:test]}
     ]
   end
 

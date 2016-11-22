@@ -8,7 +8,8 @@ defmodule WebCase do
 
       Logger.configure(level: :error)
 
-      def get(path), do: conn(:get, path)
+      def get(path), do: conn(:get, path) |> Slate.Router.call([])
+      def body(conn), do: conn.resp_body
     end
   end
 end
