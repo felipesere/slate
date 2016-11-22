@@ -3,11 +3,17 @@ defmodule GalleryTests do
   alias Slate.Repo
 
   test "GET /" do
+    Repo.clear()
+    Repo.create(%Image{id: 1,
+                  image: "london.jpg",
+                  title: "London",
+                  date: ~D[2015-03-01],
+                  subtitle: "March 1, 2015"})
     conn = get("/")
 
     assert conn.status == 200
     assert body(conn) |> Floki.find("title") |> children() == ["Gallery"]
-    assert body(conn) |> Floki.find(".asset-title") |> children() == ["London", "Madeira", "Spring", "Tenerife", "Waves", "Outcropping", "Beach", "Rocks"]
+    assert body(conn) |> Floki.find(".asset-title") |> children() == ["London"]
   end
 
   test "single page" do

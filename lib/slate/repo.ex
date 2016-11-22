@@ -4,6 +4,13 @@ defmodule Slate.Repo do
       Agent.start_link(fn -> images end, name: __MODULE__)
     end
 
+    def clear() do
+      Agent.update(__MODULE__, fn _ -> %{} end)
+    end
+
+    def create(%Image{id: id} = image) do
+      Agent.update(__MODULE__, fn state -> Map.put(state, id, image) end)
+    end
 
     def all do
       Agent.get(__MODULE__, fn images ->
