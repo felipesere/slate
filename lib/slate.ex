@@ -6,7 +6,8 @@ defmodule Slate do
     import Supervisor.Spec, warn: false
 
     children = [
-      Plug.Adapters.Cowboy.child_spec(:http, Slate.Router, [], [port: port()])
+      Plug.Adapters.Cowboy.child_spec(:http, Slate.Router, [], [port: port()]),
+      worker(Slate.Repo, [])
     ]
 
     opts = [strategy: :one_for_one, name: Slate.Supervisor]

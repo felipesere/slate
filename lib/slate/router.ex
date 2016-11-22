@@ -1,6 +1,7 @@
 defmodule Slate.Router do
   use Plug.Router
   use Plug.Builder
+  alias Slate.Repo
 
   plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug Plug.Parsers, parsers: [:multipart]
