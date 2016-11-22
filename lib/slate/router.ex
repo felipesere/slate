@@ -40,7 +40,7 @@ defmodule Slate.Router do
   end
 
   post "/admin/gallery" do
-    respond("hi there", conn)
+    redirect(conn, to: "/admin")
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)
@@ -51,5 +51,12 @@ defmodule Slate.Router do
 
   def not_found(conn) do
     send_resp(conn, 404, "oops")
+  end
+
+   def redirect(conn, [to: to]) do
+    conn
+    |> Plug.Conn.put_resp_header("location", to)
+    |> Plug.Conn.resp(302, "")
+    |> Plug.Conn.halt
   end
 end
