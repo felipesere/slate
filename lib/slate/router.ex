@@ -4,6 +4,7 @@ defmodule Slate.Router do
   alias ExAws.S3
 
   plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
+  plug Plug.Parsers, parsers: [:multipart]
   plug :match
   plug :dispatch
 
@@ -35,6 +36,10 @@ defmodule Slate.Router do
     "index"
     |> Admin.View.within_layout([entities: Repo.all, edited_entity: Repo.find(edited_entity)])
     |> respond(conn)
+  end
+
+  post "/admin/gallery" do
+    responsd("hi there", conn)
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)

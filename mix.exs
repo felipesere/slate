@@ -12,7 +12,7 @@ defmodule Slate.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug, :hackney, :ex_aws, :exfswatch],
+    [applications: [:logger, :cowboy, :plug, :hackney, :ex_aws, :exfswatch, :plug],
      mod: {Slate, []}]
   end
 
