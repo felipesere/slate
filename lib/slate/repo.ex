@@ -12,6 +12,10 @@ defmodule Slate.Repo do
       Agent.update(__MODULE__, fn state -> Map.put(state, id, image) end)
     end
 
+    def create(%Gallery{id: id} = image) do
+      Agent.update(__MODULE__, fn state -> Map.put(state, id, image) end)
+    end
+
     def all do
       Agent.get(__MODULE__, fn images ->
       images

@@ -7,17 +7,29 @@ defmodule GalleryTests do
     :ok
   end
 
-  test "GET /" do
+  test "that the index page shows all images and galleries" do
     Repo.create(%Image{id: 1,
                   image: "london.jpg",
                   title: "London",
                   date: ~D[2015-03-01],
                   subtitle: "March 1, 2015"})
+    Repo.create( %Image{id: 2,
+                  image: "rocks.jpg",
+                  title: "Rocks",
+                  date: ~D[2014-08-31],
+                  subtitle: "August 31, 2014"})
+
+    Repo.create(%Gallery{id: 3,
+                  images: [1,2],
+                  title: "Tenerife",
+                  date: ~D[2015-11-07],
+                  subtitle: "November 7, 2014"})
+
     conn = get("/")
 
     assert conn.status == 200
     assert body(conn) |> Floki.find("title") |> children() == ["Gallery"]
-    assert body(conn) |> Floki.find(".asset-title") |> children() == ["London"]
+    assert body(conn) |> Floki.find(".asset-title") |> children() == ["London", "Rocks", "Tenerife"]
   end
 
   test "single page" do
