@@ -8,12 +8,15 @@ defmodule Slate.Repo do
       Agent.update(__MODULE__, fn _ -> %{} end)
     end
 
-    def create(%Image{id: id} = image) do
+    def create(%{id: id} = image) when not is_nil(id) do
       Agent.update(__MODULE__, fn state -> Map.put(state, id, image) end)
     end
 
-    def create(%Gallery{id: id} = image) do
-      Agent.update(__MODULE__, fn state -> Map.put(state, id, image) end)
+    def create(image) do
+      Agent.update(__MODULE__, fn state ->
+        next = Enum.count(state) +1
+        Map.put(state, next, %{image | id: next})
+      end)
     end
 
     def all do

@@ -40,6 +40,13 @@ defmodule Slate.Router do
   end
 
   post "/admin/gallery" do
+    conn = fetch_query_params(conn)
+    params = conn.params
+    Repo.create(%Image{ description: params["description"],
+                        exif: params["extract_exif"],
+                        title: params["title"],
+                        date: params["when"]})
+
     redirect(conn, to: "/admin")
   end
 
