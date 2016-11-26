@@ -20,6 +20,11 @@ resource "heroku_domain" "public-domain" {
   hostname = "${aws_route53_record.www-cname.fqdn}"
 }
 
+resource "heroku_addon" "database" {
+  app = "${heroku_app.web.name}"
+  plan = "heroku-postgresql:hobby-dev"
+}
+
 resource "aws_route53_zone" "main_zone" {
   name = "felipesere.com"
 }
