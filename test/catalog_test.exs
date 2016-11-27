@@ -8,6 +8,6 @@ defmodule CatalogTests do
 
   test "createn an image" do
     # Use the repository as usual
-    assert %Image{} = Slate.Catalog.insert!(%Image{id: 1})
+    assert %Image{} = Slate.Catalog.insert!(%Image{title: "Some day", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
   end
 end
