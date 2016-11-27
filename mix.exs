@@ -12,12 +12,14 @@ defmodule Slate.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug, :hackney, :exfswatch, :plug],
+    [applications: [:logger, :cowboy, :plug, :hackney, :exfswatch, :postgrex, :ecto],
      mod: {Slate, []}]
   end
 
   defp deps do
     [
+      {:postgrex, ">= 0.0.0"},
+      {:ecto, "~> 2.0.0"},
       {:cowboy, "~> 1.0.4"},
       {:plug, "~> 1.2.2"},
       {:poison, "~> 2.0"},

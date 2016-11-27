@@ -59,7 +59,8 @@ defmodule Slate do
 
     children = [
       Plug.Adapters.Cowboy.child_spec(:http, Slate.Router, [], [port: port()]),
-      worker(Slate.Repo, [@images])
+      worker(Slate.Repo, [@images]),
+      worker(Slate.Catalog, [])
     ]
 
     opts = [strategy: :one_for_one, name: Slate.Supervisor]

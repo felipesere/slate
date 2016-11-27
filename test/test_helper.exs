@@ -20,3 +20,5 @@ defmodule WebCase do
     end
   end
 end
+
+Ecto.Adapters.SQL.Sandbox.mode(Slate.Catalog, :manual)
