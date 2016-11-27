@@ -1,7 +1,6 @@
   defmodule Image do
     use Ecto.Schema
 
-    # weather is the DB table
     schema "catalog" do
       field :image,       :string
       field :title,       :string
