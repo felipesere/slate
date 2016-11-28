@@ -31,7 +31,7 @@ defmodule CatalogTests do
     assert :none == Catalog.gallery(-1)
   end
 
-  test "finds all images and galleries" do
+  test "all images and galleries" do
     first = Catalog.insert!(image("First"))
     second = Catalog.insert!(image("Second"))
     Catalog.insert!(image("Lone guy"))
@@ -40,6 +40,17 @@ defmodule CatalogTests do
 
     found = Catalog.all() |> Enum.map(&(&1.title))
     assert found == ["someday", "Lone guy"]
+  end
+
+  test "generic find for either images or galleries" do
+    first = Catalog.insert!(image("First"))
+    created_gallery = Catalog.insert!(gallery("someday", images: [first]))
+
+    image = Catalog.find(first.id)
+    assert image.title == "First"
+
+    gallery = Catalog.find(created_gallery.id)
+    assert gallery.title == "someday"
   end
 
   defp image(title) do
