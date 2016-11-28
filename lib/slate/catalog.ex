@@ -5,4 +5,8 @@ defmodule Slate.Catalog do
   def gallery(id) do
     one(from g in Gallery, where: g.id == ^id, preload: [:images])
   end
+
+  def image(id) do
+    one(from i in Image, where: i.id == ^id)
+  end
 end

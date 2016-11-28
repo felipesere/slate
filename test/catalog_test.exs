@@ -8,7 +8,10 @@ defmodule CatalogTests do
   end
 
   test "createn an image" do
-    assert %Image{} = Catalog.insert!(%Image{title: "Some day", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
+    image = Catalog.insert!(%Image{title: "Some day", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
+
+    found = Catalog.image(image.id)
+    assert found.title == "Some day"
   end
 
   test "create a gallery" do
