@@ -2,19 +2,18 @@ defmodule CatalogTests do
   use ExUnit.Case, async: true
   alias Slate.Catalog
 
-
   setup do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Catalog)
   end
 
-  test "createn an image" do
+  test "create and find an image" do
     image = Catalog.insert!(%Image{title: "Some day", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
 
     found = Catalog.image(image.id)
     assert found.title == "Some day"
   end
 
-  test "create a gallery" do
+  test "create and find a gallery" do
     first = Catalog.insert!(%Image{title: "First", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
     second = Catalog.insert!(%Image{title: "Second", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
 
