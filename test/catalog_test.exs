@@ -13,6 +13,10 @@ defmodule CatalogTests do
     assert found.title == "Some day"
   end
 
+  test "not finding an image" do
+    assert :none == Catalog.image(-1)
+  end
+
   test "create and find a gallery" do
     first = Catalog.insert!(%Image{title: "First", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
     second = Catalog.insert!(%Image{title: "Second", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})

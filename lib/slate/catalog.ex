@@ -7,6 +7,9 @@ defmodule Slate.Catalog do
   end
 
   def image(id) do
-    one(from i in Image, where: i.id == ^id)
+    case one(from i in Image, where: i.id == ^id) do
+      nil -> :none
+      x -> x
+    end
   end
 end
