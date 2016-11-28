@@ -4,12 +4,14 @@ defmodule Slate.Catalog do
 
   def gallery(id) do
     one(from g in Gallery, where: g.id == ^id, preload: [:images])
+                                        |> convert
   end
 
   def image(id) do
-    case one(from i in Image, where: i.id == ^id) do
-      nil -> :none
-      x -> x
-    end
+    one(from i in Image, where: i.id == ^id)
+                                        |> convert
   end
+
+  defp convert(nil), do: :none
+  defp convert(thing), do: thing
 end

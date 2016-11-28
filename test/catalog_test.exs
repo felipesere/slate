@@ -26,4 +26,8 @@ defmodule CatalogTests do
     found = Catalog.gallery(created_gallery.id)
     assert length(found.images) == 2
   end
+
+  test "not finding a gallery" do
+    assert :none == Catalog.gallery(-1)
+  end
 end
