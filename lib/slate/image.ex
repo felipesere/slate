@@ -8,6 +8,7 @@
       field :description, :string
       field :exif,        :boolean, default: false
       field :date,        Ecto.Date
+      belongs_to :gallery, Gallery
       timestamps
     end
   end

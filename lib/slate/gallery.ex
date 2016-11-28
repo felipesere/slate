@@ -5,7 +5,7 @@ defmodule Gallery do
     field :title,       :string
     field :subtitle,    :string
     field :description, :string
-    field :images,      :any, virtual: true
+    has_many :images,   Image
     field :date,        Ecto.Date
     timestamps
   end
