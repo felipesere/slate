@@ -1,7 +1,7 @@
   defmodule Image do
     use Ecto.Schema
 
-    schema "catalog" do
+    schema "images" do
       field :image,       :string
       field :title,       :string
       field :subtitle,    :string
