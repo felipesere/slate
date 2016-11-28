@@ -31,6 +31,17 @@ defmodule CatalogTests do
     assert :none == Catalog.gallery(-1)
   end
 
+  test "finds all images and galleries" do
+    first = Catalog.insert!(image("First"))
+    second = Catalog.insert!(image("Second"))
+    Catalog.insert!(image("Lone guy"))
+
+    Catalog.insert!(gallery("someday", images: [first, second]))
+
+    found = Catalog.all() |> Enum.map(&(&1.title))
+    assert found == ["someday", "Lone guy"]
+  end
+
   defp image(title) do
     %Image{title: title, image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])}
   end
