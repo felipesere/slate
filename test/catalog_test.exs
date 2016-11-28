@@ -7,7 +7,7 @@ defmodule CatalogTests do
   end
 
   test "create and find an image" do
-    image = Catalog.insert!(%Image{title: "Some day", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
+    image = Catalog.insert!(image("Some day"))
 
     found = Catalog.image(image.id)
     assert found.title == "Some day"
@@ -18,10 +18,10 @@ defmodule CatalogTests do
   end
 
   test "create and find a gallery" do
-    first = Catalog.insert!(%Image{title: "First", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
-    second = Catalog.insert!(%Image{title: "Second", image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])})
+    first = Catalog.insert!(image("First"))
+    second = Catalog.insert!(image("Second"))
 
-    created_gallery = Catalog.insert!(%Gallery{title: "Some day", date: Ecto.Date.cast!(~D[2016-11-26]), images: [first, second]})
+    created_gallery = Catalog.insert!(gallery("someday", images: [first, second]))
 
     found = Catalog.gallery(created_gallery.id)
     assert length(found.images) == 2
@@ -29,5 +29,14 @@ defmodule CatalogTests do
 
   test "not finding a gallery" do
     assert :none == Catalog.gallery(-1)
+  end
+
+  defp image(title) do
+    %Image{title: title, image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])}
+  end
+
+  defp gallery(title, opts) do
+    images = Keyword.get(opts, :images, [])
+    %Gallery{title: title, date: Ecto.Date.cast!(~D[2016-11-26]), images: images}
   end
 end
