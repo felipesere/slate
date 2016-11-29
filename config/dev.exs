@@ -1,4 +1,9 @@
 use Mix.Config
 
 config :slate, Slate.Catalog,
-  pool: Ecto.Adapters.SQL.Sandbox
+  adapter: Ecto.Adapters.Postgres,
+  database: "catalog",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  port: "5432"
