@@ -6,7 +6,7 @@
       field :title,       :string
       field :subtitle,    :string
       field :description, :string
-      field :exif,        :boolean, default: false
+      embeds_one :exif,   Exif
       field :date,        Ecto.Date
       belongs_to :gallery, Gallery
       timestamps
@@ -14,5 +14,13 @@
   end
 
   defmodule Exif do
-    defstruct [:aperture, :camera, :focal_length, :iso, :shutter_speed]
+    use Ecto.Schema
+
+    embedded_schema do
+      field :aperture, :integer
+      field :camera, :string
+      field :focal_length, :integer
+      field :iso, :integer
+      field :shutter_speed, :string
+    end
   end
