@@ -9,4 +9,10 @@ defmodule Gallery do
     field :date,        Ecto.Date
     timestamps
   end
+
+  def simple(title, date, opts) do
+    images = Keyword.get(opts, :images, [])
+    subtitle = date |> Timex.to_datetime |> Timex.format!("{Mshort} {D}, {YYYY}")
+    %Gallery{title: title, date: Ecto.Date.cast!(date), subtitle: subtitle, images: images}
+  end
 end

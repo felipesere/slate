@@ -11,6 +11,17 @@
       belongs_to :gallery, Gallery
       timestamps
     end
+
+    def simple(file, title, date) do
+      subtitle = date |> Timex.to_datetime |> Timex.format!("{Mshort} {D}, {YYYY}")
+      %Image{image: file,
+        title: title,
+        date: Ecto.Date.cast!(date),
+        subtitle: subtitle
+        }
+    end
+
+    def description(%Image{} = image, description), do: %{ image | description: description}
   end
 
   defmodule Exif do
@@ -23,4 +34,6 @@
       field :iso, :integer
       field :shutter_speed, :string
     end
+
+    def add(%Image{} = image, %Exif{} = exif), do: %{ image | exif: exif}
   end

@@ -12,7 +12,7 @@ defmodule Slate.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug, :hackney, :exfswatch, :postgrex, :ecto],
+    [applications: [:logger, :cowboy, :plug, :hackney, :exfswatch, :postgrex, :ecto, :timex],
      mod: {Slate, []}]
   end
 
@@ -26,6 +26,8 @@ defmodule Slate.Mixfile do
       {:hackney, "~> 1.6"},
       {:sweet_xml, "~> 0.6.2"},
       {:exfswatch, "~> 0.1.1"},
+      {:timex, "~> 3.0"},
+      {:tzdata, "== 0.1.8", override: true},
       {:floki, "~> 0.11.0", only: [:test]}
     ]
   end

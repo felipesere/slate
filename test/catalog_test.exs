@@ -18,7 +18,7 @@ defmodule CatalogTests do
   end
 
   test "stores exif data" do
-    created = Catalog.insert!(image("has exif") |> with_exif(%Exif{aperture: 11, camera: "Canon EOS 70D", focal_length: 10, iso: 100, shutter_speed: "30s" }))
+    created = Catalog.insert!(image("has exif") |> Exif.add(%Exif{aperture: 11, camera: "Canon EOS 70D", focal_length: 10, iso: 100, shutter_speed: "30s" }))
     %Exif{aperture: aperture, iso: iso} = Catalog.image(created.id).exif
 
     assert aperture == 11
@@ -64,7 +64,6 @@ defmodule CatalogTests do
   defp image(title) do
     %Image{title: title, image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])}
   end
-  defp with_exif(%Image{} = image, %Exif{} = exif), do: %{ image | exif: exif}
 
   defp gallery(title, opts) do
     images = Keyword.get(opts, :images, [])
