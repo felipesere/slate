@@ -24,7 +24,7 @@ defmodule AdminTests do
 
     Slate.Router.call(conn, [])
 
-    added_image = Slate.Repo.all |> Enum.find(&(&1.title == "The title"))
+    added_image = Slate.Catalog.all |> Enum.find(&(&1.title == "The title"))
     assert added_image.id == 1
   end
 end

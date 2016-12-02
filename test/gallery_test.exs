@@ -1,36 +1,22 @@
 defmodule GalleryTests do
   use WebCase
   alias Slate.Repo
+  alias Slate.Catalog
 
   setup do
-    #Repo.clear()
-    :ok
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Catalog)
   end
 
-  @tag :skip
   test "that the index page shows all images and galleries" do
-    Repo.create(%Image{id: 1,
-                  image: "london.jpg",
-                  title: "London",
-                  date: ~D[2015-03-01],
-                  subtitle: "March 1, 2015"})
-    Repo.create( %Image{id: 2,
-                  image: "rocks.jpg",
-                  title: "Rocks",
-                  date: ~D[2014-08-31],
-                  subtitle: "August 31, 2014"})
-
-    Repo.create(%Gallery{id: 3,
-                  images: [1,2],
-                  title: "Tenerife",
-                  date: ~D[2015-11-07],
-                  subtitle: "November 7, 2014"})
+    london = Catalog.insert!(Image.simple("london.jpg", "Part Of Gallery Image", ~D[2015-03-01]))
+    Catalog.insert!(Image.simple("rocks.jpg", "Standalone Image", ~D[2014-08-31]))
+    Catalog.insert!(Gallery.simple("The Gallery",~D[2015-01-07], images: [london]))
 
     conn = get("/")
 
     assert conn.status == 200
     assert body(conn) |> Floki.find("title") |> children() == ["Gallery"]
-    assert body(conn) |> Floki.find(".asset-title") |> children() == ["London", "Rocks", "Tenerife"]
+    assert body(conn) |> Floki.find(".asset-title") |> children() == ["The Gallery", "Standalone Image"]
   end
 
   @tag :skip
