@@ -5,6 +5,7 @@ defmodule Slate.Admin.Router do
 
   plug Plug.Parsers, parsers: [:multipart]
   plug Plug.Logger, log: :debug
+  plug Slate.Admin.Authentication, [username: "felipe", password: "sere"]
   plug :match
   plug :dispatch
 
