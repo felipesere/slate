@@ -9,6 +9,12 @@ defmodule Slate.Catalog do
       image -> image
     end
   end
+  def find!(id) do
+    case find(id) do
+      {:ok, image} -> image
+      _ -> :none
+    end
+  end
 
   def gallery(id) do
     one(from g in Gallery, where: g.id == ^id, preload: [:images]) |> convert
@@ -27,5 +33,5 @@ defmodule Slate.Catalog do
   def create(_), do: :not_implemented
 
   defp convert(nil), do: :none
-  defp convert(thing), do: {:ok, thing}
+  defp convert(%{date: date} = thing), do: {:ok, %{ thing | date: date |> Ecto.Date.to_erl |> Date.from_erl! }}
 end
