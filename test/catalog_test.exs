@@ -62,6 +62,10 @@ defmodule CatalogTests do
     assert gallery.title == "someday"
   end
 
+  test "generic finder doesn't need to look for nothing" do
+    assert :none = Catalog.find(:none)
+  end
+
   defp image(title) do
     %Image{title: title, image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])}
   end

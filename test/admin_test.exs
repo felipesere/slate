@@ -1,13 +1,12 @@
 defmodule AdminTests do
   use WebCase
+  alias Slate.Catalog
 
   setup do
-    Slate.Repo.clear()
-    :ok
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Catalog)
   end
 
 
-  @tag :skip
   test "GET /admin" do
     conn = get("/admin")
 

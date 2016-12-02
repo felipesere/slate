@@ -2,6 +2,7 @@ defmodule Slate.Catalog do
   use Ecto.Repo, otp_app: :slate
   import Ecto.Query, only: [from: 2]
 
+  def find(:none), do: :none
   def find(id) do
     case image(id) do
       :none -> gallery(id)
