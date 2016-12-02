@@ -1,6 +1,5 @@
 defmodule GalleryTests do
   use WebCase
-  alias Slate.Repo
   alias Slate.Catalog
 
   setup do
@@ -19,23 +18,20 @@ defmodule GalleryTests do
     assert body(conn) |> Floki.find(".asset-title") |> children() == ["The Gallery", "Standalone Image"]
   end
 
-  @tag :skip
   test "single page" do
-    Repo.create(%Image{id: 1,
-                  image: "london.jpg",
-                  title: "Outcropping",
-                  date: ~D[2015-03-01],
-                  subtitle: "March 1, 2015",
-                  exif: %Exif{aperture: 11,
+    london = Image.simple("london.jpg", "Standalone", ~D[2015-03-01])
+             |> Exif.add(%Exif{aperture: 11,
                     camera: "Canon EOS 70D",
                     focal_length: 10,
                     iso: 100,
                     shutter_speed: "30s"
-                  }})
-    conn = get("/solo-image/1")
+                  }) 
+             |> Catalog.insert!
+
+    conn = get("/solo-image/#{london.id}")
 
     assert conn.status == 200
-    assert body(conn) |> Floki.find(".page-title") |> children() == ["Outcropping"]
+    assert body(conn) |> Floki.find(".page-title") |> children() == ["Standalone"]
     assert body(conn) |> Floki.find(".asset-subtitle") |> children() == ["March 1, 2015"]
     assert body(conn) |> Floki.find(".exif-data") |> children() |> present
   end

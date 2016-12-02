@@ -13,7 +13,7 @@
     end
 
     def simple(file, title, date) do
-      subtitle = date |> Timex.to_datetime |> Timex.format!("{Mshort} {D}, {YYYY}")
+      subtitle = date |> Timex.to_datetime |> Timex.format!("{Mfull} {D}, {YYYY}")
       %Image{image: file,
         title: title,
         date: Ecto.Date.cast!(date),
