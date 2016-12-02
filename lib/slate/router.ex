@@ -1,7 +1,7 @@
 defmodule Slate.Router do
   use Plug.Router
   use Plug.Builder
-  alias Slate.Repo
+  alias Slate.Catalog
 
   plug Plug.Static, at: "/public", from: :slate, only: ~w(main.css normalize.css)
   plug Plug.Parsers, parsers: [:multipart]
@@ -11,13 +11,13 @@ defmodule Slate.Router do
 
   get "/" do
     "index"
-    |> Gallery.View.within_layout([entities: Repo.all])
+    |> Gallery.View.within_layout([entities: Catalog.all])
     |> respond(conn)
   end
 
   get "/gallery/:id" do
     {id, _} = Integer.parse(id)
-    case Repo.gallery(id) do
+    case Catalog.gallery(id) do
       {:ok, gallery} -> Gallery.View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
       _ -> not_found(conn)
     end
@@ -25,7 +25,7 @@ defmodule Slate.Router do
 
   get "/solo-image/:id" do
     {id, _} = Integer.parse(id)
-    case Repo.image(id) do
+    case Catalog.image(id) do
       {:ok, image} -> Gallery.View.within_layout("solo-image", [image: image]) |> respond(conn)
       _ -> not_found(conn)
     end
@@ -35,14 +35,14 @@ defmodule Slate.Router do
     conn = fetch_query_params(conn)
     edited_entity = Map.get(conn.params, "entity", :none)
     "index"
-    |> Admin.View.within_layout([entities: Repo.all, edited_entity: Repo.find(edited_entity)])
+    |> Admin.View.within_layout([entities: Catalog.all, edited_entity: Catalog.find(edited_entity)])
     |> respond(conn)
   end
 
   post "/admin/gallery" do
     conn = fetch_query_params(conn)
     params = conn.params
-    Repo.create(%Image{ description: params["description"],
+    Catalog.create(%Image{ description: params["description"],
                         exif: params["extract_exif"],
                         title: params["title"],
                         date: params["when"]})

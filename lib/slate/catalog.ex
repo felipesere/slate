@@ -23,6 +23,8 @@ defmodule Slate.Catalog do
 
   defp all_images(), do: all(from i in Image, where: is_nil(i.gallery_id))
 
+  def create(_), do: :not_implemented
+
   defp convert(nil), do: :none
-  defp convert(thing), do: thing
+  defp convert(thing), do: {:ok, thing}
 end

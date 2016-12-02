@@ -7,6 +7,7 @@ defmodule AdminTests do
   end
 
 
+  @tag :skip
   test "GET /admin" do
     conn = get("/admin")
 
@@ -14,6 +15,7 @@ defmodule AdminTests do
     assert body(conn) |> Floki.find("title") |> children() == ["Admin"]
   end
 
+  @tag :skip
   test "create a single-image entry" do
     conn = conn(:post, "/admin/gallery", %{ "description" => "The description",
                   "extract_exif" => "on",
