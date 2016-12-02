@@ -31,7 +31,7 @@ defmodule Slate.Router do
     end
   end
 
-  forward "/admin", to: Slate.Admin
+  forward "/admin", to: Slate.Admin.Router
 
   defp respond(body, conn), do: send_resp(conn, 200, body)
 

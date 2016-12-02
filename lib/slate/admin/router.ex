@@ -1,4 +1,4 @@
-defmodule Slate.Admin do
+defmodule Slate.Admin.Router do
   use Plug.Router
   use Plug.Builder
   alias Slate.Catalog
