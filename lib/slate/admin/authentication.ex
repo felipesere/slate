@@ -1,5 +1,6 @@
 defmodule Slate.Admin.Authentication do
   def init(options) do
+    # Allow configuration through normal config.exs
     options
   end
 

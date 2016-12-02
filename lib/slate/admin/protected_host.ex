@@ -1,5 +1,8 @@
 defmodule Slate.Admin.ProtectedHost do
-  def init(opts), do: opts
+  def init(opts) do
+    # Allow configuration through normal config.exs
+    opts
+  end
 
   def call(conn, [host: protected_host]) do
     [host] = Plug.Conn.get_req_header(conn, "host")
