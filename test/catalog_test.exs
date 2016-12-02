@@ -40,7 +40,6 @@ defmodule CatalogTests do
     assert :none == Catalog.gallery(-1)
   end
 
-  @tag :skip
   test "all images and galleries" do
     first = Catalog.insert!(image("First"))
     second = Catalog.insert!(image("Second"))
