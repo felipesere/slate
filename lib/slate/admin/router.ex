@@ -21,16 +21,16 @@ defmodule Slate.Admin.Router do
     |> respond(conn)
   end
 
-  post "/gallery" do
-    conn = fetch_query_params(conn)
-    params = conn.params
-    Catalog.create(%Image{ description: params["description"],
-                        exif: params["extract_exif"],
-                        title: params["title"],
-                        date: params["when"]})
+  #post "/gallery" do
+  #  conn = fetch_query_params(conn)
+  #  params = conn.params
+  #  Catalog.create(%Image{ description: params["description"],
+  #                      exif: params["extract_exif"],
+  #                      title: params["title"],
+  #                      date: params["when"]})
 
-    redirect(conn, to: "/admin")
-  end
+  #  redirect(conn, to: "/admin")
+  #end
 
    def redirect(conn, [to: to]) do
     conn
