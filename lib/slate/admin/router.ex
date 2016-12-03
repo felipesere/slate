@@ -3,13 +3,22 @@ defmodule Slate.Admin.Router do
   use Plug.Builder
   alias Slate.Catalog
 
-  plug Plug.Parsers, parsers: [:multipart]
-  plug Plug.Logger, log: :debug
 
-  #plug Plug.SSL, hsts: false
-  #plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
+  plug :put_secret_key_base
+  def put_secret_key_base(conn, _) do
+    put_in conn.secret_key_base, "2iSeS9fRD2JNnoIEWx5OvlGD1KNi5BUsdgB18CluqCnvCscIVvBh2LfEJyfWYtfs"
+  end
+
+  if Mix.env == :prod do
+    plug Plug.SSL, hsts: false
+    plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
+  end
+  plug Plug.Session,
+    store: :cookie,
+    key: "_hello_phoenix_key",
+    signing_salt: "Jk7pxAMf"
+
   plug Slate.Admin.Authentication, exclude: ["/admin/login"]
-
   plug :match
   plug :dispatch
 
@@ -20,9 +29,14 @@ defmodule Slate.Admin.Router do
   end
 
   post "/login" do
-    conn = fetch_query_params(conn)
+    conn = conn |> fetch_query_params
 
-    redirect(conn, to: "/admin/login")
+    %{"username" => user, "password" => password} = conn.body_params
+
+    conn
+    |> Plug.Conn.fetch_session
+    |> Plug.Conn.put_session(:authenticated, true)
+    |> redirect(to: "/admin/login")
   end
 
   get "/" do

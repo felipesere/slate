@@ -21,6 +21,22 @@ defmodule AdminTests do
     assert location(conn) =~ "/admin/login"
   end
 
+  test "valid username and password" do
+    conn = conn(:post, "/admin/login", %{"username" => "Felipe", "password" => "Sere"})
+
+    conn = Slate.Router.call(conn, [])
+
+    assert conn.status == 302
+    assert location(conn) =~ "/admin"
+    assert from_session(conn, :authenticated)
+  end
+
+  def from_session(conn, key) do
+    conn
+    |> Plug.Conn.fetch_session
+    |> Plug.Conn.get_session(key)
+  end
+
   defp location(conn) do
     conn
     |> Plug.Conn.get_resp_header("location")
