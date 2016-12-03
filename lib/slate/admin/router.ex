@@ -5,7 +5,11 @@ defmodule Slate.Admin.Router do
 
   plug Plug.Parsers, parsers: [:multipart]
   plug Plug.Logger, log: :debug
-  plug Slate.Admin.Authentication, [username: "felipe", password: "sere"]
+
+  plug Plug.SSL, hsts: false
+  plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
+  plug Slate.Admin.Authentication
+
   plug :match
   plug :dispatch
 

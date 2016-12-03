@@ -1,8 +1,21 @@
 defmodule Slate.Admin.Authentication do
-  def init(options) do
-    # Allow configuration through normal config.exs
-    options
+  def init(opts) do
+
+    config = Application.get_env(:slate, Slate.Admin.Authentication)
+    user = configure(opts, config, :username)
+    pwd = configure(opts, config, :password)
+    [username: user, password: pwd]
   end
+
+  defp configure(options, config, key) do
+    options
+    |> Keyword.merge(config)
+    |> Keyword.get(key)
+    |> check(key)
+  end
+
+  defp check(nil, key), do: raise "Could not configure #{__MODULE__} because #{key} is missing"
+  defp check(thing, _), do: thing
 
   def call(conn, [username: user, password: pwd]) do
     auth_header = Plug.Conn.get_req_header(conn, "authorization")
