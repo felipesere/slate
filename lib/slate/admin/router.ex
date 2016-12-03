@@ -33,10 +33,15 @@ defmodule Slate.Admin.Router do
 
     %{"username" => user, "password" => password} = conn.body_params
 
-    conn
-    |> Plug.Conn.fetch_session
-    |> Plug.Conn.put_session(:authenticated, true)
-    |> redirect(to: "/admin/login")
+    if user == "Felipe" and password == "Sere" do
+      conn
+      |> Plug.Conn.fetch_session
+      |> Plug.Conn.put_session(:authenticated, true)
+      |> redirect(to: "/admin")
+    else
+      conn
+      |> redirect(to: "/admin/login")
+    end
   end
 
   get "/" do
