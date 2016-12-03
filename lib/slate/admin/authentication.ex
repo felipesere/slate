@@ -4,7 +4,8 @@ defmodule Slate.Admin.Authentication do
     config = Application.get_env(:slate, Slate.Admin.Authentication)
     user = configure(opts, config, :username)
     pwd = configure(opts, config, :password)
-    [username: user, password: pwd]
+    paths = configure(opts, config, :exclude)
+    [exclude: paths, username: user, password: pwd]
   end
 
   defp configure(options, config, key) do
@@ -17,17 +18,21 @@ defmodule Slate.Admin.Authentication do
   defp check(nil, key), do: raise "Could not configure #{__MODULE__} because #{key} is missing"
   defp check(thing, _), do: thing
 
-  def call(conn, [username: user, password: pwd]) do
-    auth_header = Plug.Conn.get_req_header(conn, "authorization")
-
-    if auth_header == [] do
-      deny(conn)
+  def call(conn, [exclude: paths, username: user, password: pwd]) do
+    if conn.request_path in paths do
+      conn
     else
-      [username, password] = extract_credentials(auth_header)
-      if username == user && password == pwd do
-        conn
-      else
+      auth_header = Plug.Conn.get_req_header(conn, "authorization")
+
+      if auth_header == [] do
         deny(conn)
+      else
+        [username, password] = extract_credentials(auth_header)
+        if username == user && password == pwd do
+          conn
+        else
+          deny(conn)
+        end
       end
     end
   end

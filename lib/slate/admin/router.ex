@@ -8,7 +8,7 @@ defmodule Slate.Admin.Router do
 
   plug Plug.SSL, hsts: false
   plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
-  plug Slate.Admin.Authentication
+  plug Slate.Admin.Authentication, exclude: ["/login"]
 
   plug :match
   plug :dispatch
