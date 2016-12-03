@@ -6,12 +6,24 @@ defmodule Slate.Admin.Router do
   plug Plug.Parsers, parsers: [:multipart]
   plug Plug.Logger, log: :debug
 
-  plug Plug.SSL, hsts: false
-  plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
-  plug Slate.Admin.Authentication, exclude: ["/login"]
+  #plug Plug.SSL, hsts: false
+  #plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com"
+  plug Slate.Admin.Authentication, exclude: ["/admin/login"]
 
   plug :match
   plug :dispatch
+
+
+  get "/login" do
+    Admin.View.within_layout("login")
+    |> respond(conn)
+  end
+
+  post "/login" do
+    conn = fetch_query_params(conn)
+
+    redirect(conn, to: "/admin/login")
+  end
 
   get "/" do
     conn = fetch_query_params(conn)

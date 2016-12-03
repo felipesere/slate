@@ -123,6 +123,15 @@ nav {
   }
 }
 
+.login_form {
+  @include span-columns(2);
+  @include shift(5);
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
 [type="checkbox"] {
   margin-left: 0px;
 }

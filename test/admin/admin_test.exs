@@ -6,6 +6,27 @@ defmodule AdminTests do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Catalog)
   end
 
+  test "reach the login page" do
+    conn = get("/admin/login")
+
+    assert conn.status == 200
+  end
+
+  test "invalid username and password" do
+    conn = conn(:post, "/admin/login", %{"username" => "Bob", "password" => "Sinclair"})
+
+    conn = Slate.Router.call(conn, [])
+
+    assert conn.status == 302
+    assert location(conn) =~ "/admin/login"
+  end
+
+  defp location(conn) do
+    conn
+    |> Plug.Conn.get_resp_header("location")
+    |> List.first
+  end
+
   @tag :skip
   test "GET /admin" do
     conn = get("/admin")

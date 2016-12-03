@@ -31,7 +31,7 @@ defmodule Templating do
 
       defp to_list(name, value), do: Keyword.new([{name, value}])
 
-      def within_layout(name, assigns) do
+      def within_layout(name, assigns \\ []) do
         inner = render(name, assigns)
         render(unquote(layout), [content: inner])
       end
