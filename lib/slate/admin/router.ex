@@ -1,4 +1,5 @@
 defmodule Slate.Admin.Router do
+  use Web
   use Plug.Router
   use Plug.Builder
   alias Slate.Catalog
@@ -59,13 +60,6 @@ defmodule Slate.Admin.Router do
                         date: params["when"]})
 
     redirect(conn, to: "/admin")
-  end
-
-   def redirect(conn, [to: to]) do
-    conn
-    |> Plug.Conn.put_resp_header("location", to)
-    |> Plug.Conn.resp(302, "")
-    |> Plug.Conn.halt
   end
 
   defp respond(body, conn), do: send_resp(conn, 200, body)

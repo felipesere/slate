@@ -1,4 +1,5 @@
 defmodule Slate.Admin.ProtectedHost do
+  use Web
   require Logger
   def init(opts) do
     # Allow configuration through normal config.exs
@@ -15,12 +16,5 @@ defmodule Slate.Admin.ProtectedHost do
     else
       conn
     end
-  end
-
-  defp redirect(conn, [to: target]) do
-    conn
-    |> Plug.Conn.put_resp_header("location", target)
-    |> Plug.Conn.send_resp(301, "Redirecting...")
-    |> Plug.Conn.halt
   end
 end
