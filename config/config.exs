@@ -7,12 +7,7 @@ config :slate,
   ecto_repos: [Slate.Catalog]
 
 config :slate, Slate.Catalog,
-  adapter: Ecto.Adapters.Postgres,
-  database: "catalog",
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  port: "5432"
+  adapter: Ecto.Adapters.Postgres
 
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
