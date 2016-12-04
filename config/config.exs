@@ -14,10 +14,6 @@ config :slate, Slate.Catalog,
   hostname: "localhost",
   port: "5432"
 
-config :slate, Slate.Admin.Authentication,
-  username: "felipe",
-  password: "sere"
-
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 

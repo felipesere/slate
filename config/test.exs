@@ -7,3 +7,7 @@ config :slate, Slate.Catalog,
   password: "postgres",
   hostname: "localhost",
   port: "5432"
+
+config :slate, Slate.Admin.Authentication,
+  username: "felipe",
+  password: "sere"
