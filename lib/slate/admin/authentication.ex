@@ -1,25 +1,14 @@
 defmodule Slate.Admin.Authentication do
+  alias Slate.Admin.Credentials
   def init(opts) do
 
-    config = Application.get_env(:slate, Slate.Admin.Authentication)
-    user = configure(opts, config, :username)
-    pwd = configure(opts, config, :password)
-    paths = configure(opts, config, :exclude)
-    [exclude: paths, username: user, password: pwd]
+    paths = Keyword.get(opts, :exclude, [])
+    [exclude: paths]
   end
 
-  defp configure(options, config, key) do
-    options
-    |> Keyword.merge(config)
-    |> Keyword.get(key)
-    |> check(key)
-  end
-
-  defp check(nil, key), do: raise "Could not configure #{__MODULE__} because #{key} is missing"
-  defp check(thing, _), do: thing
-
-  def call(conn, [exclude: paths, username: user, password: pwd]) do
-    if needs_no_auth?(conn, paths) || has_cookie?(conn) || has_header_auth?(conn, user, pwd) do
+  def call(conn, opts) do
+    paths = Keyword.get(opts, :exclude, [])
+    if needs_no_auth?(conn, paths) || has_cookie?(conn) || has_header_auth?(conn) do
       conn
     else
       deny(conn)
@@ -34,12 +23,11 @@ defmodule Slate.Admin.Authentication do
     |> Plug.Conn.get_session(:authenticated)
   end
 
-  defp has_header_auth?(conn, user, pwd) do
+  defp has_header_auth?(conn) do
     with [auth_header] <- Plug.Conn.get_req_header(conn, "authorization"),
-         [username, password] <- extract_credentials(auth_header),
-         matching <- username == user && password == pwd
+         [username, password] <- extract_credentials(auth_header)
          do 
-           matching
+           Credentials.check(username, password)
     else
       _ -> false
     end

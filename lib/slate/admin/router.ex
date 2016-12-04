@@ -2,6 +2,7 @@ defmodule Slate.Admin.Router do
   use Plug.Router
   use Plug.Builder
   alias Slate.Catalog
+  alias Slate.Admin.Credentials
 
 
   plug :put_secret_key_base
@@ -31,7 +32,7 @@ defmodule Slate.Admin.Router do
 
     %{"username" => user, "password" => password} = conn.body_params
 
-    if user == "Felipe" and password == "Sere" do
+    if Credentials.check(user, password) do
       conn
       |> Plug.Conn.fetch_session
       |> Plug.Conn.put_session(:authenticated, true)
