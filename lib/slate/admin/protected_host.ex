@@ -5,9 +5,10 @@ defmodule Slate.Admin.ProtectedHost do
     opts
   end
 
-  def call(conn, [host: protected_host]) do
+  def call(conn, opts) do
     [host] = Plug.Conn.get_req_header(conn, "host")
-    scheme = conn.scheme |> Atom.to_string()
+    scheme = Keyword.get(opts, :scheme, Atom.to_string(conn.scheme))
+    protected_host = Keyword.fetch!(opts, :host)
     if host != protected_host do
       Logger.info("Arriving from #{host}, heading to #{protected_host}")
       redirect(conn, to: scheme <> "://" <> protected_host <> conn.request_path)
