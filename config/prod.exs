@@ -11,5 +11,4 @@ config :slate, Slate.Admin.Authentication,
   password: System.get_env("PASSWORD")
 
 config :logger,
-  backends: [:console],
-  compile_time_purge_level: :info
+  backends: [:console]
