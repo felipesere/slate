@@ -37,8 +37,19 @@ defmodule WebCase do
       def children(elements) when is_list(elements), do: Enum.flat_map(elements, &children(&1))
       def children({_, _, x}), do: x
 
-      def present([]), do: false
-      def present(_elements), do: true
+      def present(x), do: Enum.any?(x)
+
+      def redirected(conn, [to: location]) do
+        assert conn.halted
+        assert conn.status == 302
+        assert location(conn) == location
+      end
+
+      defp location(conn) do
+        conn
+        |> Plug.Conn.get_resp_header("location")
+        |> List.first
+      end
     end
   end
 end

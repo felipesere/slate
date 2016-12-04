@@ -38,12 +38,6 @@ defmodule AdminTests do
     |> Plug.Conn.get_session(key)
   end
 
-  defp location(conn) do
-    conn
-    |> Plug.Conn.get_resp_header("location")
-    |> List.first
-  end
-
   @tag :skip
   test "GET /admin" do
     conn = get("/admin")

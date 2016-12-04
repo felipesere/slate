@@ -51,7 +51,8 @@ defmodule Slate.Admin.Authentication do
 
   defp deny(conn) do
     conn
-    |> Plug.Conn.send_resp(401, "Unauthorized")
+    |> Plug.Conn.put_resp_header("location", "/admin/login")
+    |> Plug.Conn.send_resp(302, "Unauthorized")
     |> Plug.Conn.halt
   end
 end

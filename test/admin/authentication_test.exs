@@ -36,10 +36,12 @@ defmodule Slate.Admin.AuthenticationTest do
     conn = conn(:get, "/admin", "")
            |> add_session()
            |> put_req_header("authorization", "Basic #{@basic_auth}")
+
     result = Authentication.call(conn, [exclude: [], username: "Somebody", password: "Else"])
 
     assert result.halted
-    assert result.status == 401
+    assert result.status == 302
+    assert location(result) == "/admin/login"
   end
 
   test "can exclude certain paths" do
