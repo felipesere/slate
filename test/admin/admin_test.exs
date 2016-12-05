@@ -20,7 +20,6 @@ defmodule AdminTests do
 
     assert conn.status == 302
     assert location(conn) =~ "/admin/login"
-    refute from_session(conn, :authenticated)
   end
 
   test "valid username and password" do
