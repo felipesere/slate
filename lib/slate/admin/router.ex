@@ -11,7 +11,9 @@ defmodule Slate.Admin.Router do
     put_in conn.secret_key_base, "2iSeS9fRD2JNnoIEWx5OvlGD1KNi5BUsdgB18CluqCnvCscIVvBh2LfEJyfWYtfs"
   end
 
-  plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com", scheme: "https"
+  if Mix.env != :test do
+    plug Slate.Admin.ProtectedHost, host: "slate-blog.herokuapp.com", scheme: "https"
+  end
   plug Plug.Session,
     store: :cookie,
     key: "_hello_phoenix_key",
