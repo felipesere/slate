@@ -16,7 +16,7 @@ defmodule Slate.Admin.ProtectedHostTest do
 
     conn = ProtectedHost.call(conn, host: "really.secure.com")
 
-    assert conn.status == 301
+    assert conn.status == 302
     assert Plug.Conn.get_resp_header(conn, "location") == ["http://really.secure.com/foo"]
     assert conn.halted
   end
@@ -27,7 +27,7 @@ defmodule Slate.Admin.ProtectedHostTest do
     conn = ProtectedHost.call(conn, host: "really.secure.com")
 
     assert conn.halted
-    assert conn.status == 301
+    assert conn.status == 302
     assert Plug.Conn.get_resp_header(conn, "location") == ["http://really.secure.com/"]
   end
 end
