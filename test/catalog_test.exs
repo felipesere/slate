@@ -69,7 +69,7 @@ defmodule CatalogTests do
   test "updates the title of an image" do
     image = Catalog.insert!(image("Some day"))
 
-    {:ok, image} = Catalog.update_image(image.id, %{title: "The other day"})
+    {:ok, image} = Catalog.update_image(image.id, %{"title" => "The other day"})
 
     assert image.title == "The other day"
   end

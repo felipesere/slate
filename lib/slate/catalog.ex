@@ -19,7 +19,7 @@ defmodule Slate.Catalog do
   def update_image(id, changes) do
     {:ok, image} = image(id)
     image
-    |> Ecto.Changeset.change(changes)
+    |> Ecto.Changeset.cast(changes, [:title])
     |> update()
   end
 

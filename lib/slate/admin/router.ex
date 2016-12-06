@@ -58,10 +58,8 @@ defmodule Slate.Admin.Router do
   post "/gallery" do
     conn = fetch_query_params(conn)
     params = conn.params
-    Catalog.create(%Image{ description: params["description"],
-                        exif: params["extract_exif"],
-                        title: params["title"],
-                        date: params["when"]})
+
+    Catalog.update_image(params["id"], params)
 
     redirect(conn, to: "/admin")
   end

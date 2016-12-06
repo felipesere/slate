@@ -19,6 +19,7 @@
     <label for="extract_exif">Extract EXIF</label>
     <input id="extract_exif" type="checkbox" name="extract_exif"/>
   </div>
+  <input type="hidden" name="id" value="<%= @edited_entity.id %>"/>
   <div class="row">
     <input type="submit" value="Upload!" />
   </div>
