@@ -25,7 +25,8 @@ defmodule Slate.Admin.Router do
 
 
   get "/login" do
-    Admin.View.within_layout("login")
+    "login"
+    |> Admin.View.within_layout()
     |> respond(conn)
   end
 
@@ -48,6 +49,7 @@ defmodule Slate.Admin.Router do
   get "/" do
     conn = fetch_query_params(conn)
     edited_entity = Map.get(conn.params, "entity", :none)
+
     "index"
     |> Admin.View.within_layout([entities: Catalog.all, edited_entity: Catalog.find!(edited_entity)])
     |> respond(conn)

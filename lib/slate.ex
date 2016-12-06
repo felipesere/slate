@@ -70,7 +70,7 @@ defmodule Slate do
   def port do
     case System.get_env("PORT") do
       nil -> 4000
-      x -> Integer.parse(x) |> elem(0)
+      x -> x |> Integer.parse |> elem(0)
     end
   end
 end

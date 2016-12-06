@@ -6,7 +6,9 @@ defmodule Templating do
   end
 
   defmacro __using__(opts) do
-    layout = Keyword.get(opts, :layout, "layout") |> expand(__CALLER__)
+    layout = opts
+             |> Keyword.get(:layout, "layout")
+             |> expand(__CALLER__)
 
     compiled_layout = EEx.compile_file(layout, [engine: EEx.SmartEngine])
 
@@ -60,7 +62,8 @@ defmodule Templating do
   end
 
   def to_atom(filename) do
-    String.split(filename, ".")
+    filename
+    |> String.split(".")
     |> List.first
   end
 end

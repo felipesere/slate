@@ -18,7 +18,9 @@ defmodule Slate.Router do
   get "/gallery/:id" do
     {id, _} = Integer.parse(id)
     case Catalog.gallery(id) do
-      {:ok, gallery} -> Gallery.View.within_layout("gallery", [gallery: gallery]) |> respond(conn)
+      {:ok, gallery} -> "gallery"
+                         |> Gallery.View.within_layout([gallery: gallery])
+                         |> respond(conn)
       _ -> not_found(conn)
     end
   end
@@ -26,7 +28,9 @@ defmodule Slate.Router do
   get "/solo-image/:id" do
     {id, _} = Integer.parse(id)
     case Catalog.image(id) do
-      {:ok, image} -> Gallery.View.within_layout("solo-image", [image: image]) |> respond(conn)
+      {:ok, image} -> "solo-image"
+                       |> Gallery.View.within_layout([image: image])
+                       |> respond(conn)
       _ -> not_found(conn)
     end
   end

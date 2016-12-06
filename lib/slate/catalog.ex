@@ -6,12 +6,12 @@ defmodule Slate.Catalog do
   def find(id) do
     case image(id) do
       :none -> gallery(id)
-      image -> image
+      entity -> entity
     end
   end
   def find!(id) do
     case find(id) do
-      {:ok, image} -> image
+      {:ok, entity} -> entity
       _ -> :none
     end
   end
