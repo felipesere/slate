@@ -66,6 +66,14 @@ defmodule CatalogTests do
     assert :none = Catalog.find(:none)
   end
 
+  test "updates the title of an image" do
+    image = Catalog.insert!(image("Some day"))
+
+    {:ok, image} = Catalog.update_image(image.id, %{title: "The other day"})
+
+    assert image.title == "The other day"
+  end
+
   defp image(title) do
     %Image{title: title, image: "sunset.jpeg", date: Ecto.Date.cast!(~D[2016-11-26])}
   end

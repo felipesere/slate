@@ -16,6 +16,13 @@ defmodule Slate.Catalog do
     end
   end
 
+  def update_image(id, changes) do
+    {:ok, image} = image(id)
+    image
+    |> Ecto.Changeset.change(changes)
+    |> update()
+  end
+
   def gallery(id) do
     one(from g in Gallery, where: g.id == ^id, preload: [:images]) |> convert
   end
