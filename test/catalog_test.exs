@@ -66,12 +66,20 @@ defmodule CatalogTests do
     assert :none = Catalog.find(:none)
   end
 
-  test "updates the title of an image" do
-    image = Catalog.insert!(image("Some day"))
+  test "all fields of an image can be updated" do
+    id= Catalog.insert!(image("Some day")).id
 
-    {:ok, image} = Catalog.update_image(image.id, %{"title" => "The other day"})
+    {:ok, image} = Catalog.update_image(id, %{"title" => "The other day",
+                                              "description" => "something...",
+                                              "subtitle" => "other",
+                                              "image" => "foo.jpg",
+                                              "date" => ~D[2011-11-11]})
 
     assert image.title == "The other day"
+    assert image.description == "something..."
+    assert image.subtitle == "other"
+    assert image.image == "foo.jpg"
+    assert image.date == ~D[2011-11-11]
   end
 
   defp image(title) do
