@@ -12,7 +12,9 @@ defmodule Slate.Admin.ProtectedHost do
     protected_host = Keyword.fetch!(opts, :host)
     if host != protected_host do
       Logger.info("Arriving from #{host}, heading to #{protected_host}")
-      redirect(conn, to: scheme <> "://" <> protected_host <> conn.request_path)
+      conn
+      |> Plug.Conn.put_resp_header("x-redirect-reason", "ssl-protected")
+      |> redirect(to: scheme <> "://" <> protected_host <> conn.request_path)
     else
       conn
     end

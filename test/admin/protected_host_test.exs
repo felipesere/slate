@@ -18,6 +18,7 @@ defmodule Slate.Admin.ProtectedHostTest do
 
     assert conn.status == 302
     assert Plug.Conn.get_resp_header(conn, "location") == ["http://really.secure.com/foo"]
+    assert Plug.Conn.get_resp_header(conn, "x-redirect-reason") == ["ssl-protected"]
     assert conn.halted
   end
 

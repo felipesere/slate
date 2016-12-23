@@ -17,6 +17,7 @@ defmodule Slate.Admin.AuthenticationTest do
     result = Authentication.call(conn, [])
 
     assert result.halted
+    assert Plug.Conn.get_resp_header(result, "x-redirect-reason") == ["auth-denied"]
   end
 
   test "allows authenticated acces" do

@@ -42,6 +42,7 @@ defmodule Slate.Admin.Authentication do
 
   defp deny(conn) do
     conn
+    |> Plug.Conn.put_resp_header("x-redirect-reason","auth-denied")
     |> Plug.Conn.put_resp_header("location", "/admin/login")
     |> Plug.Conn.send_resp(302, "Unauthorized")
     |> Plug.Conn.halt
