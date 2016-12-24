@@ -57,12 +57,18 @@ defmodule Slate.Admin.Router do
 
   post "/gallery" do
     conn = fetch_query_params(conn)
-    params = conn.params
+    params = conn.params |> clean()
+
 
     Catalog.update_image(params["id"], params)
 
     redirect(conn, to: "/admin")
   end
+
+  defp clean(%{"date" => date} = params) when is_list(date) do
+    %{ params | "date" => Date.from_iso8601!(date) }
+  end
+  defp clean(x), do: x
 
   defp respond(body, conn), do: send_resp(conn, 200, body)
 
