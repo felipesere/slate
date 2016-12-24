@@ -1,7 +1,6 @@
 defmodule AdminTests do
   use WebCase
   alias Slate.Catalog
-  alias Slate.Admin.Credentials
 
   setup do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Catalog)
@@ -13,33 +12,6 @@ defmodule AdminTests do
     assert conn.status == 200
   end
 
-  test "invalid username and password" do
-    conn = conn(:post, "/admin/login", %{"username" => "Bob", "password" => "Sinclair"})
-
-    conn = Slate.Router.call(conn, [])
-
-    assert conn.status == 302
-    assert location(conn) =~ "/admin/login"
-  end
-
-  test "valid username and password" do
-    Credentials.set(username: "Felipe", password: "Sere")
-    conn = conn(:post, "/admin/login", %{"username" => "Felipe", "password" => "Sere"})
-
-    conn = Slate.Router.call(conn, [])
-
-    assert conn.status == 302
-    assert location(conn) =~ "/admin"
-    assert from_session(conn, :authenticated)
-  end
-
-  def from_session(conn, key) do
-    conn
-    |> Plug.Conn.fetch_session
-    |> Plug.Conn.get_session(key)
-  end
-
-  @tag :skip
   test "GET /admin" do
     conn = get("/admin")
 
