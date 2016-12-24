@@ -26,7 +26,7 @@ defmodule Slate.Admin.Authentication do
   defp has_header_auth?(conn) do
     with [auth_header] <- Plug.Conn.get_req_header(conn, "authorization"),
          [username, password] <- extract_credentials(auth_header)
-         do 
+         do
            Credentials.check(username, password)
     else
       _ -> false

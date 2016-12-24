@@ -24,7 +24,7 @@ defmodule Slate.Admin.Credentials do
   end
 
   def set([username: user, password: pass]) do
-    Agent.update(__MODULE__, fn _ -> 
+    Agent.update(__MODULE__, fn _ ->
       %{username: user, password: pass}
     end)
   end
