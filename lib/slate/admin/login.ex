@@ -19,15 +19,20 @@ defmodule Slate.Admin.Login do
     %{"username" => user, "password" => password} = conn.body_params
 
     if Credentials.check(user, password) do
-      conn
-      |> Plug.Conn.fetch_session
-      |> Plug.Conn.put_session(:authenticated, true)
-      |> redirect(to: "/admin")
+      accept(conn)
     else
-      conn
-      |> redirect(to: "/admin/login")
+      deny(conn)
     end
   end
+
+  defp accept(conn) do
+    conn
+    |> Plug.Conn.fetch_session
+    |> Plug.Conn.put_session(:authenticated, true)
+    |> redirect(to: "/admin")
+  end
+
+  defp deny(conn), do: redirect(conn, to: "/admin/login")
 
   match _ do
     not_found(conn)
