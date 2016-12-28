@@ -18,9 +18,13 @@ defmodule Slate.Admin.Authentication do
   defp needs_no_auth?(conn, paths), do: conn.request_path in paths
 
   defp has_cookie?(conn) do
-    conn
-    |> Plug.Conn.fetch_session
-    |> Plug.Conn.get_session(:authenticated)
+    try do
+      conn
+      |> Plug.Conn.fetch_session
+      |> Plug.Conn.get_session(:authenticated)
+    rescue
+      ArgumentError -> false
+    end
   end
 
   defp has_header_auth?(conn) do
