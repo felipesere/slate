@@ -34,13 +34,7 @@ defmodule Slate.Admin.Router do
   end
   defp clean(x), do: x
 
-  defp respond(body, conn), do: send_resp(conn, 200, body)
-
   match _ do
     not_found(conn)
-  end
-
-  def not_found(conn) do
-    send_resp(conn, 404, "oops")
   end
 end
