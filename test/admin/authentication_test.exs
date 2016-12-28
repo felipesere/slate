@@ -55,4 +55,14 @@ defmodule Slate.Admin.AuthenticationTest do
 
     refute result.halted
   end
+
+  test "can exclude based on regex" do
+    conn = conn(:get, "/login", "")
+
+    result = Authentication.call(conn, [exclude: ~r/.+ogi.+/])
+    refute result.halted
+
+    result = Authentication.call(conn, [exclude: ~r/some/])
+    assert result.halted
+  end
 end

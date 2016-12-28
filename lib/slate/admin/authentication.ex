@@ -8,14 +8,15 @@ defmodule Slate.Admin.Authentication do
 
   def call(conn, opts) do
     paths = Keyword.get(opts, :exclude, [])
-    if needs_no_auth?(conn, paths) || has_cookie?(conn) || has_header_auth?(conn) do
+    if is_excluded?(conn, paths) || has_cookie?(conn) || has_header_auth?(conn) do
       conn
     else
       deny(conn)
     end
   end
 
-  defp needs_no_auth?(conn, paths), do: conn.request_path in paths
+  defp is_excluded?(conn, paths) when is_list(paths), do: conn.request_path in paths
+  defp is_excluded?(conn, regex), do: Regex.match?(regex, conn.request_path)
 
   defp has_cookie?(conn) do
     try do
