@@ -3,7 +3,6 @@ defmodule Slate.Admin.Router do
   use Plug.Router
   use Plug.Builder
   alias Slate.Catalog
-  alias Slate.Admin.Credentials
 
 
   plug :put_secret_key_base
@@ -20,31 +19,11 @@ defmodule Slate.Admin.Router do
 
     plug Slate.Admin.Authentication, exclude: ["/admin/login"]
   end
+
   plug :match
   plug :dispatch
 
-
-  get "/login" do
-    "login"
-    |> Admin.View.within_layout()
-    |> respond(conn)
-  end
-
-  post "/login" do
-    conn = conn |> fetch_query_params
-
-    %{"username" => user, "password" => password} = conn.body_params
-
-    if Credentials.check(user, password) do
-      conn
-      |> Plug.Conn.fetch_session
-      |> Plug.Conn.put_session(:authenticated, true)
-      |> redirect(to: "/admin")
-    else
-      conn
-      |> redirect(to: "/admin/login")
-    end
-  end
+  forward "/login", to: Slate.Admin.Login
 
   get "/" do
     conn = fetch_query_params(conn)
