@@ -28,3 +28,7 @@ Once Heroku Postgres has been added a DATABASE_URL or HEROKU_POSTGRESQL_COLOR_UR
 * Only run https
 * Only use the slate-blog.herokuapp.com
 * Only authenticated (either basic or cookie)
+
+
+Starting the DB:
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
