@@ -41,5 +41,8 @@ defmodule Slate.Catalog do
   def create(_), do: :not_implemented
 
   defp convert(nil), do: :none
-  defp convert(%{date: date} = thing), do: {:ok, %{ thing | date: date |> Ecto.Date.to_erl |> Date.from_erl! }}
+  defp convert(%{date: %Ecto.Date{} = date} = entity) do
+    {:ok, %{ entity | date: date |> Ecto.Date.to_erl |> Date.from_erl! }}
+  end
+  defp convert(entity), do: {:ok, entity}
 end
