@@ -26,3 +26,5 @@ infrastructure/variables.tf
 **/.serverless
 
 *.backup
+
+priv/latest_remote_poll.txt

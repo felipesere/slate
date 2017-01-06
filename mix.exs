@@ -12,23 +12,23 @@ defmodule Slate.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug, :hackney, :exfswatch, :postgrex, :ecto, :timex],
+    [applications: [:logger, :tzdata, :cowboy, :plug, :hackney, :exfswatch, :postgrex, :ecto, :timex],
      mod: {Slate, []}]
   end
 
   defp deps do
     [
-      {:postgrex, ">= 0.0.0"},
-      {:ecto, "~> 2.0.0"},
+      {:postgrex, ">= 0.13.0"},
+      {:ecto, "~> 2.1.0"},
       {:cowboy, "~> 1.0.4"},
-      {:plug, "~> 1.2.2"},
-      {:poison, "~> 2.0"},
+      {:plug, "~> 1.3.0"},
+      {:poison, "~> 3.0.0"},
       {:hackney, "~> 1.6"},
       {:sweet_xml, "~> 0.6.2"},
-      {:exfswatch, "~> 0.1.1"},
+      {:exfswatch, "~> 0.3.0"},
       {:timex, "~> 3.0"},
-      {:tzdata, "== 0.1.8", override: true},
-      {:floki, "~> 0.11.0", only: [:test]},
+      {:tzdata, "~> 0.5.0"},
+      {:floki, "~> 0.12.0", only: [:test]},
       {:credo, "~> 0.5", only: [:dev, :test]}
     ]
   end
